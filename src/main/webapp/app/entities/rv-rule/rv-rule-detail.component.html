@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rvRule">
+            <h2><span jhiTranslate="rulesValidatorApp.rvRule.detail.title">Rv Rule</span> {{ rvRule.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rulesValidatorApp.rvRule.ruleCode">Rule Code</span></dt>
+                <dd>
+                    <span>{{ rvRule.ruleCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rvRule.description">Description</span></dt>
+                <dd>
+                    <span>{{ rvRule.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rvRule.mode">Mode</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'rulesValidatorApp.RvRuleMode.' + rvRule.mode }}">{{ rvRule.mode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rvRule.operator">Operator</span></dt>
+                <dd>
+                    <div *ngIf="rvRule.operatorId">
+                        <a [routerLink]="['/rv-operator', rvRule.operatorId, 'view']">{{ rvRule.operatorId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rvRule.rvParam">Rv Param</span></dt>
+                <dd>
+                    <span *ngFor="let rvParam of rvRule.rvParams; let last = last">
+                        <a [routerLink]="['/rv-param', rvParam?.id, 'view']">{{ rvParam.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rv-rule', rvRule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
