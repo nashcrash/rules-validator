@@ -19,3 +19,5 @@ id;operator_code;description;bean_name;number_of_params
 18;and;And Operator;andOperator;-2
 19;or;Or Operator;orOperator;-2
 20;not;Not Operator;notOperator;1
+21;true;True Operator;trueOperator;0
+22;false;False Operator;falseOperator;0

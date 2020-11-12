@@ -4,6 +4,7 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import it.sitissimo.validation.domain.enumeration.RvRuleLevel;
 import it.sitissimo.validation.domain.enumeration.RvRuleMode;
 
 /**
@@ -17,6 +18,9 @@ public class RvRuleDTO implements Serializable {
     private String ruleCode;
 
     private String description;
+
+    @NotNull
+    private RvRuleLevel level;
 
     @NotNull
     private RvRuleMode mode;
@@ -47,6 +51,14 @@ public class RvRuleDTO implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public RvRuleLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(RvRuleLevel level) {
+        this.level = level;
     }
 
     public RvRuleMode getMode() {
@@ -97,6 +109,7 @@ public class RvRuleDTO implements Serializable {
             "id=" + getId() +
             ", ruleCode='" + getRuleCode() + "'" +
             ", description='" + getDescription() + "'" +
+            ", level='" + getLevel() + "'" +
             ", mode='" + getMode() + "'" +
             ", operatorId=" + getOperatorId() +
             ", rvParams='" + getRvParams() + "'" +

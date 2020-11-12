@@ -1,11 +1,11 @@
-id;rule_code;description;mode
-1;New Jersey Plastic neural;sensor Division;FIRST_ERROR
-2;recontextualize;District invoice;FIRST_ERROR
-3;virtual synergies;Mountains;FIRST_ERROR
-4;generate communities;Savings Account teal;ALL_VALIDATION
-5;Ohio;payment;ALL_VALIDATION
-6;Concrete Mount Sleek Wooden Fish;Licensed Fresh Table maroon Distributed;FIRST_ERROR
-7;Intelligent Concrete Chair;Refined parsing;FIRST_ERROR
-8;Vermont;deposit Investment Account bandwidth;FIRST_ERROR
-9;Borders Refined Rubber Computer Strategist;sensor challenge;ALL_VALIDATION
-10;transmit North Carolina back up;salmon;FIRST_ERROR
+id;rule_code;description;level;mode
+1;New Jersey Plastic neural;sensor Division;CRITICAL;ALL_VALIDATION
+2;bandwidth solid state multi-tasking;Lempira Incredible invoice;CRITICAL;ALL_VALIDATION
+3;niches Profit-focused generate;Phased Savings Account;CRITICAL;FIRST_ERROR
+4;back up Trafficway;RAM turquoise Austria;WARNING;ALL_VALIDATION
+5;Groves Intelligent Concrete Chair Avon;parsing Music Checking Account;WARNING;FIRST_ERROR
+6;Multi-tiered;Analyst;CRITICAL;ALL_VALIDATION
+7;model programming;generating payment Gorgeous Concrete Towels;CRITICAL;ALL_VALIDATION
+8;core Pizza;Colombian Peso Unidad de Valor Real New Hampshire connect;WARNING;ALL_VALIDATION
+9;SMTP;Ergonomic Soft Cheese Platinum Borders;CRITICAL;ALL_VALIDATION
+10;seize;Alaska Bedfordshire compressing;WARNING;FIRST_ERROR

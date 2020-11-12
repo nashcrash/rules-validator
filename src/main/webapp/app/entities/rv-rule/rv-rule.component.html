@@ -25,6 +25,7 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="ruleCode"><span jhiTranslate="rulesValidatorApp.rvRule.ruleCode">Rule Code</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="description"><span jhiTranslate="rulesValidatorApp.rvRule.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="level"><span jhiTranslate="rulesValidatorApp.rvRule.level">Level</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="mode"><span jhiTranslate="rulesValidatorApp.rvRule.mode">Mode</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="operatorId"><span jhiTranslate="rulesValidatorApp.rvRule.operator">Operator</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
@@ -35,6 +36,7 @@
                     <td><a [routerLink]="['/rv-rule', rvRule.id, 'view']">{{ rvRule.id }}</a></td>
                     <td>{{ rvRule.ruleCode }}</td>
                     <td>{{ rvRule.description }}</td>
+                    <td jhiTranslate="{{ 'rulesValidatorApp.RvRuleLevel.' + rvRule.level }}">{{ rvRule.level }}</td>
                     <td jhiTranslate="{{ 'rulesValidatorApp.RvRuleMode.' + rvRule.mode }}">{{ rvRule.mode }}</td>
                     <td>
                         <div *ngIf="rvRule.operatorId">

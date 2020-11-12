@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import it.sitissimo.validation.domain.enumeration.RvRuleLevel;
+
 import it.sitissimo.validation.domain.enumeration.RvRuleMode;
 
 /**
@@ -33,6 +35,11 @@ public class RvRule implements Serializable {
 
     @Column(name = "description")
     private String description;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "level", nullable = false)
+    private RvRuleLevel level;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -83,6 +90,19 @@ public class RvRule implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public RvRuleLevel getLevel() {
+        return level;
+    }
+
+    public RvRule level(RvRuleLevel level) {
+        this.level = level;
+        return this;
+    }
+
+    public void setLevel(RvRuleLevel level) {
+        this.level = level;
     }
 
     public RvRuleMode getMode() {
@@ -160,6 +180,7 @@ public class RvRule implements Serializable {
             "id=" + getId() +
             ", ruleCode='" + getRuleCode() + "'" +
             ", description='" + getDescription() + "'" +
+            ", level='" + getLevel() + "'" +
             ", mode='" + getMode() + "'" +
             "}";
     }

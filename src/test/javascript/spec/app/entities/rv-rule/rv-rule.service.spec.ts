@@ -2,6 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RvRuleService } from 'app/entities/rv-rule/rv-rule.service';
 import { IRvRule, RvRule } from 'app/shared/model/rv-rule.model';
+import { RvRuleLevel } from 'app/shared/model/enumerations/rv-rule-level.model';
 import { RvRuleMode } from 'app/shared/model/enumerations/rv-rule-mode.model';
 
 describe('Service Tests', () => {
@@ -21,7 +22,7 @@ describe('Service Tests', () => {
       service = injector.get(RvRuleService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new RvRule(0, 'AAAAAAA', 'AAAAAAA', RvRuleMode.FIRST_ERROR);
+      elemDefault = new RvRule(0, 'AAAAAAA', 'AAAAAAA', RvRuleLevel.CRITICAL, RvRuleMode.FIRST_ERROR);
     });
 
     describe('Service methods', () => {
@@ -57,6 +58,7 @@ describe('Service Tests', () => {
           {
             ruleCode: 'BBBBBB',
             description: 'BBBBBB',
+            level: 'BBBBBB',
             mode: 'BBBBBB',
           },
           elemDefault
@@ -76,6 +78,7 @@ describe('Service Tests', () => {
           {
             ruleCode: 'BBBBBB',
             description: 'BBBBBB',
+            level: 'BBBBBB',
             mode: 'BBBBBB',
           },
           elemDefault

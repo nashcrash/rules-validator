@@ -31,6 +31,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import it.sitissimo.validation.domain.enumeration.RvRuleLevel;
 import it.sitissimo.validation.domain.enumeration.RvRuleMode;
 /**
  * Integration tests for the {@link RvRuleResource} REST controller.
@@ -46,6 +47,9 @@ public class RvRuleResourceIT {
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final RvRuleLevel DEFAULT_LEVEL = RvRuleLevel.CRITICAL;
+    private static final RvRuleLevel UPDATED_LEVEL = RvRuleLevel.WARNING;
 
     private static final RvRuleMode DEFAULT_MODE = RvRuleMode.FIRST_ERROR;
     private static final RvRuleMode UPDATED_MODE = RvRuleMode.ALL_VALIDATION;
@@ -83,6 +87,7 @@ public class RvRuleResourceIT {
         RvRule rvRule = new RvRule()
             .ruleCode(DEFAULT_RULE_CODE)
             .description(DEFAULT_DESCRIPTION)
+            .level(DEFAULT_LEVEL)
             .mode(DEFAULT_MODE);
         return rvRule;
     }
@@ -96,6 +101,7 @@ public class RvRuleResourceIT {
         RvRule rvRule = new RvRule()
             .ruleCode(UPDATED_RULE_CODE)
             .description(UPDATED_DESCRIPTION)
+            .level(UPDATED_LEVEL)
             .mode(UPDATED_MODE);
         return rvRule;
     }
@@ -122,6 +128,7 @@ public class RvRuleResourceIT {
         RvRule testRvRule = rvRuleList.get(rvRuleList.size() - 1);
         assertThat(testRvRule.getRuleCode()).isEqualTo(DEFAULT_RULE_CODE);
         assertThat(testRvRule.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testRvRule.getLevel()).isEqualTo(DEFAULT_LEVEL);
         assertThat(testRvRule.getMode()).isEqualTo(DEFAULT_MODE);
     }
 
@@ -152,6 +159,26 @@ public class RvRuleResourceIT {
         int databaseSizeBeforeTest = rvRuleRepository.findAll().size();
         // set the field null
         rvRule.setRuleCode(null);
+
+        // Create the RvRule, which fails.
+        RvRuleDTO rvRuleDTO = rvRuleMapper.toDto(rvRule);
+
+
+        restRvRuleMockMvc.perform(post("/api/rv-rules")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(rvRuleDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<RvRule> rvRuleList = rvRuleRepository.findAll();
+        assertThat(rvRuleList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkLevelIsRequired() throws Exception {
+        int databaseSizeBeforeTest = rvRuleRepository.findAll().size();
+        // set the field null
+        rvRule.setLevel(null);
 
         // Create the RvRule, which fails.
         RvRuleDTO rvRuleDTO = rvRuleMapper.toDto(rvRule);
@@ -199,6 +226,7 @@ public class RvRuleResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(rvRule.getId().intValue())))
             .andExpect(jsonPath("$.[*].ruleCode").value(hasItem(DEFAULT_RULE_CODE)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())))
             .andExpect(jsonPath("$.[*].mode").value(hasItem(DEFAULT_MODE.toString())));
     }
     
@@ -235,6 +263,7 @@ public class RvRuleResourceIT {
             .andExpect(jsonPath("$.id").value(rvRule.getId().intValue()))
             .andExpect(jsonPath("$.ruleCode").value(DEFAULT_RULE_CODE))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()))
             .andExpect(jsonPath("$.mode").value(DEFAULT_MODE.toString()));
     }
     @Test
@@ -260,6 +289,7 @@ public class RvRuleResourceIT {
         updatedRvRule
             .ruleCode(UPDATED_RULE_CODE)
             .description(UPDATED_DESCRIPTION)
+            .level(UPDATED_LEVEL)
             .mode(UPDATED_MODE);
         RvRuleDTO rvRuleDTO = rvRuleMapper.toDto(updatedRvRule);
 
@@ -274,6 +304,7 @@ public class RvRuleResourceIT {
         RvRule testRvRule = rvRuleList.get(rvRuleList.size() - 1);
         assertThat(testRvRule.getRuleCode()).isEqualTo(UPDATED_RULE_CODE);
         assertThat(testRvRule.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testRvRule.getLevel()).isEqualTo(UPDATED_LEVEL);
         assertThat(testRvRule.getMode()).isEqualTo(UPDATED_MODE);
     }
 

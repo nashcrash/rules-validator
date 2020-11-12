@@ -1,0 +1,9 @@
+{
+  "rulesValidatorApp": {
+    "RvRuleLevel": {
+      "null": "",
+      "CRITICAL": "CRITICAL",
+      "WARNING": "WARNING"
+    }
+  }
+}

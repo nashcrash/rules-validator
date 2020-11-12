@@ -11,6 +11,12 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "level",
+      "fieldType": "RvRuleLevel",
+      "fieldValues": "CRITICAL,WARNING",
+      "fieldValidateRules": ["required"]
+    },
+    {
       "fieldName": "mode",
       "fieldType": "RvRuleMode",
       "fieldValues": "FIRST_ERROR,ALL_VALIDATION",

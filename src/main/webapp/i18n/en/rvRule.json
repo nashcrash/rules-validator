@@ -18,6 +18,7 @@
       },
       "ruleCode": "Rule Code",
       "description": "Description",
+      "level": "Level",
       "mode": "Mode",
       "operator": "Operator",
       "rvParam": "Rv Param"
