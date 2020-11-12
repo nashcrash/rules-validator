@@ -1,0 +1,66 @@
+application {
+  config {
+    baseName ValidationRules,
+    applicationType monolith,
+    packageName it.sitissimo.validation,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+
+entity Rule {
+	ruleId Long,
+	ruleCode String required,
+    description String, //Use espression language #{}. key-words: rule, model
+    mode RuleMode required
+}
+
+relationship ManyToOne {
+	Rule{operator} to Operator
+}
+
+relationship ManyToMany {
+	Rule{parameter(parameterId)} to Parameter
+}
+
+enum RuleMode {
+    FIRST_ERROR, ALL_VALIDATION
+}
+
+entity Operator {
+	operatorId Long,
+	operatorCode String required,
+    description String,
+    beanName String required,
+    parameterNumber Integer //0, 1, 2, ... (null more), -1 (1 or more), -2 (2 or more)
+}
+
+entity Parameter {
+	converterId Long,
+	value String
+}
+
+relationship ManyToMany {
+	Parameter{converter(converterId)} to Converter
+}
+
+entity Converter {
+	converterCode String required,
+    description String,
+    beanName String required,
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
