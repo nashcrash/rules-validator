@@ -47,6 +47,14 @@ public class CacheConfiguration {
             createCache(cm, it.sitissimo.validation.domain.User.class.getName());
             createCache(cm, it.sitissimo.validation.domain.Authority.class.getName());
             createCache(cm, it.sitissimo.validation.domain.User.class.getName() + ".authorities");
+            createCache(cm, it.sitissimo.validation.domain.Rule.class.getName());
+            createCache(cm, it.sitissimo.validation.domain.Rule.class.getName() + ".params");
+            createCache(cm, it.sitissimo.validation.domain.Operator.class.getName());
+            createCache(cm, it.sitissimo.validation.domain.Param.class.getName());
+            createCache(cm, it.sitissimo.validation.domain.Param.class.getName() + ".converters");
+            createCache(cm, it.sitissimo.validation.domain.Param.class.getName() + ".rules");
+            createCache(cm, it.sitissimo.validation.domain.Converter.class.getName());
+            createCache(cm, it.sitissimo.validation.domain.Converter.class.getName() + ".params");
             // jhipster-needle-ehcache-add-entry
         };
     }

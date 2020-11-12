@@ -1,0 +1,24 @@
+{
+  "rulesValidatorApp": {
+    "param": {
+      "home": {
+        "title": "Params",
+        "createLabel": "Genera un nuovo Param",
+        "createOrEditLabel": "Genera o modifica un Param",
+        "notFound": "No Params found"
+      },
+      "created": "&Egrave; stato generato un nuovo Param con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Param identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Param con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Param {{ id }}?"
+      },
+      "detail": {
+        "title": "Param"
+      },
+      "value": "Value",
+      "converter": "Converter",
+      "rule": "Rule"
+    }
+  }
+}

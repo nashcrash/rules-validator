@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="param">
+            <h2><span jhiTranslate="rulesValidatorApp.param.detail.title">Param</span> {{ param.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rulesValidatorApp.param.value">Value</span></dt>
+                <dd>
+                    <span>{{ param.value }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.param.converter">Converter</span></dt>
+                <dd>
+                    <span *ngFor="let converter of param.converters; let last = last">
+                        <a [routerLink]="['/converter', converter?.id, 'view']">{{ converter.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/param', param.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

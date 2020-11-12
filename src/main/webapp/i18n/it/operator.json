@@ -1,0 +1,25 @@
+{
+  "rulesValidatorApp": {
+    "operator": {
+      "home": {
+        "title": "Operators",
+        "createLabel": "Genera un nuovo Operator",
+        "createOrEditLabel": "Genera o modifica un Operator",
+        "notFound": "No Operators found"
+      },
+      "created": "&Egrave; stato generato un nuovo Operator con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Operator identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Operator con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Operator {{ id }}?"
+      },
+      "detail": {
+        "title": "Operator"
+      },
+      "operatorCode": "Operator Code",
+      "description": "Description",
+      "beanName": "Bean Name",
+      "numberOfParams": "Number Of Params"
+    }
+  }
+}

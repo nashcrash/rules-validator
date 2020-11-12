@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-rule-heading" jhiTranslate="rulesValidatorApp.rule.home.createOrEditLabel">Create or edit a Rule</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rulesValidatorApp.rule.ruleCode" for="field_ruleCode">Rule Code</label>
+                    <input type="text" class="form-control" name="ruleCode" id="field_ruleCode"
+                           formControlName="ruleCode"/>
+                    <div *ngIf="editForm.get('ruleCode')!.invalid && (editForm.get('ruleCode')!.dirty || editForm.get('ruleCode')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ruleCode')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rulesValidatorApp.rule.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rulesValidatorApp.rule.mode" for="field_mode">Mode</label>
+                    <select class="form-control" name="mode" formControlName="mode" id="field_mode">
+                        <option value="FIRST_ERROR">{{ 'rulesValidatorApp.RuleMode.FIRST_ERROR' | translate }}</option>
+                        <option value="ALL_VALIDATION">{{ 'rulesValidatorApp.RuleMode.ALL_VALIDATION' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('mode')!.invalid && (editForm.get('mode')!.dirty || editForm.get('mode')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('mode')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rulesValidatorApp.rule.operator" for="field_operator">Operator</label>
+                    <select class="form-control" id="field_operator" name="operator" formControlName="operatorId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="operatorOption.id" *ngFor="let operatorOption of operators; trackBy: trackById">{{ operatorOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="rulesValidatorApp.rule.param" for="field_params">Param</label>
+                    <select class="form-control" id="field_params" multiple name="params" formControlName="params">
+                        <option [ngValue]="getSelected(editForm.get('params')!.value, paramOption)" *ngFor="let paramOption of params; trackBy: trackById">{{ paramOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

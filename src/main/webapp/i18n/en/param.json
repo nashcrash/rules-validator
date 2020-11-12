@@ -1,0 +1,24 @@
+{
+  "rulesValidatorApp": {
+    "param": {
+      "home": {
+        "title": "Params",
+        "createLabel": "Create a new Param",
+        "createOrEditLabel": "Create or edit a Param",
+        "notFound": "No Params found"
+      },
+      "created": "A new Param is created with identifier {{ param }}",
+      "updated": "A Param is updated with identifier {{ param }}",
+      "deleted": "A Param is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Param {{ id }}?"
+      },
+      "detail": {
+        "title": "Param"
+      },
+      "value": "Value",
+      "converter": "Converter",
+      "rule": "Rule"
+    }
+  }
+}
