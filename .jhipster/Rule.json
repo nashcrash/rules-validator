@@ -1,0 +1,48 @@
+{
+  "name": "Rule",
+  "fields": [
+    {
+      "fieldName": "ruleCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mode",
+      "fieldType": "RuleMode",
+      "fieldValues": "FIRST_ERROR,ALL_VALIDATION",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "operator",
+      "otherEntityRelationshipName": "rule",
+      "relationshipName": "operator",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "parameter",
+      "otherEntityRelationshipName": "rule",
+      "relationshipName": "parameter",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201112082306",
+  "entityTableName": "rule",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["ValidationRules"]
+}

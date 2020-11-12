@@ -3,7 +3,7 @@ package it.sitissimo.validation.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.github.jhipster.config.JHipsterProperties;
-import it.sitissimo.validation.RulesValidatorApp;
+import it.sitissimo.validation.ValidationRulesApp;
 import it.sitissimo.validation.domain.PersistentAuditEvent;
 import it.sitissimo.validation.repository.PersistenceAuditEventRepository;
 import java.time.Instant;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Integration tests for {@link AuditEventService}.
  */
-@SpringBootTest(classes = RulesValidatorApp.class)
+@SpringBootTest(classes = ValidationRulesApp.class)
 @Transactional
 public class AuditEventServiceIT {
     @Autowired

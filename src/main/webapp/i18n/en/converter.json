@@ -1,0 +1,25 @@
+{
+  "validationRulesApp": {
+    "converter": {
+      "home": {
+        "title": "Converters",
+        "createLabel": "Create a new Converter",
+        "createOrEditLabel": "Create or edit a Converter",
+        "notFound": "No Converters found"
+      },
+      "created": "A new Converter is created with identifier {{ param }}",
+      "updated": "A Converter is updated with identifier {{ param }}",
+      "deleted": "A Converter is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Converter {{ id }}?"
+      },
+      "detail": {
+        "title": "Converter"
+      },
+      "converterCode": "Converter Code",
+      "description": "Description",
+      "beanName": "Bean Name",
+      "parameter": "Parameter"
+    }
+  }
+}

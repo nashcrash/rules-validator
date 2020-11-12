@@ -37,8 +37,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/rulesvalidator;DB_CLOSE_DELAY=-1
-    username: rulesValidator
+    url: jdbc:h2:file:./target/h2db/db/validationrules;DB_CLOSE_DELAY=-1
+    username: ValidationRules
     password:
     hikari:
       poolName: Hikari
