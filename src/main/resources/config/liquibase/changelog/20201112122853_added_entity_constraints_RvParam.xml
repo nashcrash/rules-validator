@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity RvParam.
+    -->
+    <changeSet id="20201112122853-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="rv_param_id"
+                                 baseTableName="rv_param_rv_converter"
+                                 constraintName="fk_rv_param_rv_converter_rv_param_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rv_param"/>
+
+        <addForeignKeyConstraint baseColumnNames="rv_converter_id"
+                                 baseTableName="rv_param_rv_converter"
+                                 constraintName="fk_rv_param_rv_converter_rv_converter_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rv_converter"/>
+        
+    </changeSet>
+</databaseChangeLog>

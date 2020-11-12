@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rvConverter">
+            <h2><span jhiTranslate="rulesValidatorApp.rvConverter.detail.title">Rv Converter</span> {{ rvConverter.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rulesValidatorApp.rvConverter.converterCode">Converter Code</span></dt>
+                <dd>
+                    <span>{{ rvConverter.converterCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rvConverter.description">Description</span></dt>
+                <dd>
+                    <span>{{ rvConverter.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rvConverter.beanName">Bean Name</span></dt>
+                <dd>
+                    <span>{{ rvConverter.beanName }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rv-converter', rvConverter.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

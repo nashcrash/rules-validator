@@ -1,0 +1,27 @@
+{
+  "rulesValidatorApp": {
+    "rvRule": {
+      "home": {
+        "title": "RvRules",
+        "createLabel": "Genera un nuovo Rv Rule",
+        "createOrEditLabel": "Genera o modifica un Rv Rule",
+        "notFound": "No Rv Rules found"
+      },
+      "created": "&Egrave; stato generato un nuovo Rv Rule con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Rv Rule identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Rv Rule con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Rv Rule {{ id }}?"
+      },
+      "detail": {
+        "title": "Rv Rule"
+      },
+      "ruleCode": "Rule Code",
+      "description": "Description",
+      "level": "Level",
+      "mode": "Mode",
+      "operator": "Operator",
+      "rvParam": "Rv Param"
+    }
+  }
+}
