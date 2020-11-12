@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import it.sitissimo.validation.RulesValidatorApp;
+import it.sitissimo.validation.ValidationRulesApp;
 import it.sitissimo.validation.domain.Authority;
 import it.sitissimo.validation.domain.User;
 import it.sitissimo.validation.repository.UserRepository;
@@ -35,7 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @AutoConfigureMockMvc
 @WithMockUser(authorities = AuthoritiesConstants.ADMIN)
-@SpringBootTest(classes = RulesValidatorApp.class)
+@SpringBootTest(classes = ValidationRulesApp.class)
 public class UserResourceIT {
     private static final String DEFAULT_LOGIN = "johndoe";
     private static final String UPDATED_LOGIN = "jhipster";

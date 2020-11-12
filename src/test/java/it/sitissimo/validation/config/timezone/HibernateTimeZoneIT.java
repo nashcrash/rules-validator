@@ -3,7 +3,7 @@ package it.sitissimo.validation.config.timezone;
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import it.sitissimo.validation.RulesValidatorApp;
+import it.sitissimo.validation.ValidationRulesApp;
 import it.sitissimo.validation.repository.timezone.DateTimeWrapper;
 import it.sitissimo.validation.repository.timezone.DateTimeWrapperRepository;
 import java.time.*;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Integration tests for the ZoneId Hibernate configuration.
  */
-@SpringBootTest(classes = RulesValidatorApp.class)
+@SpringBootTest(classes = ValidationRulesApp.class)
 public class HibernateTimeZoneIT {
     @Autowired
     private DateTimeWrapperRepository dateTimeWrapperRepository;

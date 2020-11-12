@@ -1,7 +1,7 @@
 {
-  "name": "rules-validator",
+  "name": "validation-rules",
   "version": "0.0.1-SNAPSHOT",
-  "description": "Description for rulesValidator",
+  "description": "Description for ValidationRules",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

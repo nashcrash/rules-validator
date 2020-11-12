@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rules-validator": {
+    "validation-rules": {
       "root": "",
       "sourceRoot": "src/main/webapp",
       "projectType": "application",
@@ -29,7 +29,7 @@
       "architect": {}
     }
   },
-  "defaultProject": "rules-validator",
+  "defaultProject": "validation-rules",
   "cli": {
     "packageManager": "npm"
   }

@@ -5,7 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import io.github.jhipster.config.JHipsterProperties;
-import it.sitissimo.validation.RulesValidatorApp;
+import it.sitissimo.validation.ValidationRulesApp;
 import it.sitissimo.validation.config.Constants;
 import it.sitissimo.validation.domain.User;
 import java.io.ByteArrayOutputStream;
@@ -38,11 +38,11 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 /**
  * Integration tests for {@link MailService}.
  */
-@SpringBootTest(classes = RulesValidatorApp.class)
+@SpringBootTest(classes = ValidationRulesApp.class)
 public class MailServiceIT {
     private static final String[] languages = {
         "en",
-        "it",
+        "fr",
         // jhipster-needle-i18n-language-constant - JHipster will add/remove languages in this array
     };
     private static final Pattern PATTERN_LOCALE_3 = Pattern.compile("([a-z]{2})-([a-zA-Z]{4})-([a-z]{2})");

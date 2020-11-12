@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import './vendor';
-import { RulesValidatorSharedModule } from 'app/shared/shared.module';
-import { RulesValidatorCoreModule } from 'app/core/core.module';
-import { RulesValidatorAppRoutingModule } from './app-routing.module';
-import { RulesValidatorHomeModule } from './home/home.module';
-import { RulesValidatorEntityModule } from './entities/entity.module';
+import { ValidationRulesSharedModule } from 'app/shared/shared.module';
+import { ValidationRulesCoreModule } from 'app/core/core.module';
+import { ValidationRulesAppRoutingModule } from './app-routing.module';
+import { ValidationRulesHomeModule } from './home/home.module';
+import { ValidationRulesEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -18,14 +18,14 @@ import { ErrorComponent } from './layouts/error/error.component';
 @NgModule({
   imports: [
     BrowserModule,
-    RulesValidatorSharedModule,
-    RulesValidatorCoreModule,
-    RulesValidatorHomeModule,
+    ValidationRulesSharedModule,
+    ValidationRulesCoreModule,
+    ValidationRulesHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
-    RulesValidatorEntityModule,
-    RulesValidatorAppRoutingModule,
+    ValidationRulesEntityModule,
+    ValidationRulesAppRoutingModule,
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],
 })
-export class RulesValidatorAppModule {}
+export class ValidationRulesAppModule {}

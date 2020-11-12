@@ -1,0 +1,26 @@
+{
+  "validationRulesApp": {
+    "rule": {
+      "home": {
+        "title": "Rules",
+        "createLabel": "Créer un nouveau Rule",
+        "createOrEditLabel": "Créer ou éditer un Rule",
+        "notFound": "Aucun Rule trouvé"
+      },
+      "created": "Un nouveau Rule a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Rule avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Rule avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Rule {{ id }} ?"
+      },
+      "detail": {
+        "title": "Rule"
+      },
+      "ruleCode": "Rule Code",
+      "description": "Description",
+      "mode": "Mode",
+      "operator": "Operator",
+      "parameter": "Parameter"
+    }
+  }
+}

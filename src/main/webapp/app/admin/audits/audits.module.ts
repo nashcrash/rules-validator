@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { RulesValidatorSharedModule } from 'app/shared/shared.module';
+import { ValidationRulesSharedModule } from 'app/shared/shared.module';
 
 import { AuditsComponent } from './audits.component';
 
 import { auditsRoute } from './audits.route';
 
 @NgModule({
-  imports: [RulesValidatorSharedModule, RouterModule.forChild([auditsRoute])],
+  imports: [ValidationRulesSharedModule, RouterModule.forChild([auditsRoute])],
   declarations: [AuditsComponent],
 })
 export class AuditsModule {}

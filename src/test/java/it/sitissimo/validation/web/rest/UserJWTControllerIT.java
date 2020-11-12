@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import it.sitissimo.validation.RulesValidatorApp;
+import it.sitissimo.validation.ValidationRulesApp;
 import it.sitissimo.validation.domain.User;
 import it.sitissimo.validation.repository.UserRepository;
 import it.sitissimo.validation.web.rest.vm.LoginVM;
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Integration tests for the {@link UserJWTController} REST controller.
  */
 @AutoConfigureMockMvc
-@SpringBootTest(classes = RulesValidatorApp.class)
+@SpringBootTest(classes = ValidationRulesApp.class)
 public class UserJWTControllerIT {
     @Autowired
     private UserRepository userRepository;

@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { advanceTo } from 'jest-date-mock';
 
-import { RulesValidatorTestModule } from '../../../test.module';
+import { ValidationRulesTestModule } from '../../../test.module';
 import { AuditsComponent } from 'app/admin/audits/audits.component';
 import { AuditsService } from 'app/admin/audits/audits.service';
 import { Audit } from 'app/admin/audits/audit.model';
@@ -43,7 +43,7 @@ describe('Component Tests', () => {
 
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [RulesValidatorTestModule],
+        imports: [ValidationRulesTestModule],
         declarations: [AuditsComponent],
         providers: [AuditsService],
       })

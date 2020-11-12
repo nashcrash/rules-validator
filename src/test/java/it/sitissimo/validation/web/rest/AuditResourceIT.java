@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import it.sitissimo.validation.RulesValidatorApp;
+import it.sitissimo.validation.ValidationRulesApp;
 import it.sitissimo.validation.domain.PersistentAuditEvent;
 import it.sitissimo.validation.repository.PersistenceAuditEventRepository;
 import it.sitissimo.validation.security.AuthoritiesConstants;
@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @AutoConfigureMockMvc
 @WithMockUser(authorities = AuthoritiesConstants.ADMIN)
-@SpringBootTest(classes = RulesValidatorApp.class)
+@SpringBootTest(classes = ValidationRulesApp.class)
 @Transactional
 public class AuditResourceIT {
     private static final String SAMPLE_PRINCIPAL = "SAMPLE_PRINCIPAL";
