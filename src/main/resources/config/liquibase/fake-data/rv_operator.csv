@@ -1,11 +1,21 @@
 id;operator_code;description;bean_name;number_of_params
-1;Outdoors Generic withdrawal;Automotive;digital;87651
-2;Architect Checking Account;Reverse-engineered Practical Concrete Chips;purple Ergonomic Soft Computer;30022
-3;indexing Small multi-byte;Gorgeous mobile;Intelligent Cotton Car Associate Horizontal;45530
-4;primary microchip deposit;Garden;Future Sleek Cotton Bacon;85965
-5;Regional EXE;wireless;wireless invoice;52128
-6;Cedi;bleeding-edge;Cambridgeshire technologies exploit;89880
-7;Principal Sleek back-end;Metal Soft;synergistic Practical Granite Shoes Borders;32954
-8;violet;hard drive repurpose;Computers;97629
-9;project;interactive;Ergonomic Metal Table;15960
-10;USB national;Fields relationships;policy Outdoors;76653
+1;eq;Equals operator;equalsOperator;2
+2;ne;Not Equals Operator;notEqualsOperator;2
+3;gt;Greater Than Operator;greaterThanOperator;2
+4;ge;Greater or Equals Operator;greaterOrEqualsOperator;2
+5;lt;Lesser Than Operator;lesserThanOperator;2
+6;le;Lesser or Equals Operator;lesserOrEqualsOperator;2
+7;isNull;Is Null Operator;isNullOperator;1
+8;isNotNull;Required Operator;isNotNullOperator;1
+9;regex;Regex Operator;regexOperator;2
+10;exists;Exists Operator;existsOperator;2
+11;notExists;Not Exists Operator;notExistsOperator;2
+12;forEach;For Each Operator;forEachOperator;2
+13;existsEquals;Exists Equals Operator;existsEqualsOperator;3
+14;existsLesserThan;Exists Lesser Than Operator;existsLesserThanOperator;3
+15;existsGreaterThan;Exists Greater Than Operator;existsGreaterThanOperator;3
+16;unique;Unique Operator;uniqueOperator;-3
+17;ifElse;If Else Operator;ifElseOperator;-2
+18;and;And Operator;andOperator;-2
+19;or;Or Operator;orOperator;-2
+20;not;Not Operator;notOperator;1
