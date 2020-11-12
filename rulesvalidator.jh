@@ -1,0 +1,51 @@
+entity Rule {
+	ruleCode String required unique,
+    description String, //Use espression language #{}. key-words: rule, model
+    mode RuleMode required
+}
+
+entity Operator {
+	operatorCode String required unique,
+    description String,
+    beanName String required,
+    numberOfParameters Integer //0, 1, 2, ... (null more), -1 (1 or more), -2 (2 or more)
+}
+
+entity Parameter {
+	value String
+}
+
+entity Converter {
+	converterCode String required unique,
+    description String,
+    beanName String required,
+}
+
+relationship ManyToOne {
+	Rule{operator} to Operator
+}
+
+relationship ManyToMany {
+	Rule to Parameter
+}
+
+relationship ManyToMany {
+	Parameter to Converter
+}
+
+enum RuleMode {
+    FIRST_ERROR, ALL_VALIDATION
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
