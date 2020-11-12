@@ -1,0 +1,26 @@
+{
+  "rulesValidatorApp": {
+    "rule": {
+      "home": {
+        "title": "Rules",
+        "createLabel": "Genera un nuovo Rule",
+        "createOrEditLabel": "Genera o modifica un Rule",
+        "notFound": "No Rules found"
+      },
+      "created": "&Egrave; stato generato un nuovo Rule con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Rule identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Rule con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Rule {{ id }}?"
+      },
+      "detail": {
+        "title": "Rule"
+      },
+      "ruleCode": "Rule Code",
+      "description": "Description",
+      "mode": "Mode",
+      "operator": "Operator",
+      "parameter": "Parameter"
+    }
+  }
+}

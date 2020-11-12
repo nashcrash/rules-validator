@@ -1,0 +1,25 @@
+{
+  "rulesValidatorApp": {
+    "converter": {
+      "home": {
+        "title": "Converters",
+        "createLabel": "Genera un nuovo Converter",
+        "createOrEditLabel": "Genera o modifica un Converter",
+        "notFound": "No Converters found"
+      },
+      "created": "&Egrave; stato generato un nuovo Converter con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Converter identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Converter con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Converter {{ id }}?"
+      },
+      "detail": {
+        "title": "Converter"
+      },
+      "converterCode": "Converter Code",
+      "description": "Description",
+      "beanName": "Bean Name",
+      "parameter": "Parameter"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="operator">
+            <h2><span jhiTranslate="rulesValidatorApp.operator.detail.title">Operator</span> {{ operator.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rulesValidatorApp.operator.operatorCode">Operator Code</span></dt>
+                <dd>
+                    <span>{{ operator.operatorCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.operator.description">Description</span></dt>
+                <dd>
+                    <span>{{ operator.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.operator.beanName">Bean Name</span></dt>
+                <dd>
+                    <span>{{ operator.beanName }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.operator.numberOfParameters">Number Of Parameters</span></dt>
+                <dd>
+                    <span>{{ operator.numberOfParameters }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/operator', operator.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

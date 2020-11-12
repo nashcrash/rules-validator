@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rule">
+            <h2><span jhiTranslate="rulesValidatorApp.rule.detail.title">Rule</span> {{ rule.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rulesValidatorApp.rule.ruleCode">Rule Code</span></dt>
+                <dd>
+                    <span>{{ rule.ruleCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rule.description">Description</span></dt>
+                <dd>
+                    <span>{{ rule.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rule.mode">Mode</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'rulesValidatorApp.RuleMode.' + rule.mode }}">{{ rule.mode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rule.operator">Operator</span></dt>
+                <dd>
+                    <div *ngIf="rule.operatorId">
+                        <a [routerLink]="['/operator', rule.operatorId, 'view']">{{ rule.operatorId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rule.parameter">Parameter</span></dt>
+                <dd>
+                    <span *ngFor="let parameter of rule.parameters; let last = last">
+                        <a [routerLink]="['/parameter', parameter?.id, 'view']">{{ parameter.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rule', rule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
