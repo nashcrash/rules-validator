@@ -3,6 +3,7 @@ package it.sitissimo.validation.web.rest;
 import it.sitissimo.validation.service.ValidationService;
 import it.sitissimo.validation.service.dto.RvValidationRequestDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDTO;
+import it.sitissimo.validation.web.rest.errors.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class ValidationController {
     private ValidationService validationService;
 
     @PostMapping("/validate")
-    public ResponseEntity<RvValidationResultDTO> validate(@Valid @RequestBody RvValidationRequestDTO validationRequestDTO) throws URISyntaxException {
+    public ResponseEntity<RvValidationResultDTO> validate(@Valid @RequestBody RvValidationRequestDTO validationRequestDTO) throws URISyntaxException, ValidationException {
         RvValidationResultDTO result=validationService.validate(validationRequestDTO);
         return ResponseEntity.ok().body(result);
     }

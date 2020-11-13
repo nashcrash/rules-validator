@@ -1,5 +1,6 @@
 package it.sitissimo.validation.service.dto;
 
+import it.sitissimo.validation.domain.enumeration.RvRuleLevel;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,9 +10,9 @@ import java.io.Serializable;
  */
 @Data
 public class RvValidationResultDetailDTO implements Serializable {
-    private String field;
-    private String rules;
-    private String level;
+    private String ruleCode;
+    private RvRuleLevel level;
     private String description;
-    private String[] attributes;
+    private String message;
+    private Object[] attributes;
 }

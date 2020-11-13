@@ -1,11 +1,4 @@
 id;converter_code;description;bean_name
-1;online;Algerian Dinar Credit Card Account Checking Account;Planner Ports architectures
-2;embrace;turquoise;incubate back up parsing
-3;Borders;Ports;array Planner
-4;Dynamic complexity;Health;deposit zero tolerance Optimized
-5;Technician Bike;Iowa Wooden Mouse;secured line SMTP
-6;Computers discrete Operations;pixel;Director
-7;Soap Ergonomic Producer;back up Customer;card
-8;California Personal Loan Account;card;systems 3rd generation
-9;Car Soap Dynamic;unleash;Oklahoma
-10;white;panel;invoice UIC-Franc Bedfordshire
+1;dateToString;Converter Date to String;dateToString
+2;stringToDate;Converter String to Date;stringToDate
+

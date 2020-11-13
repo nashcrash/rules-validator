@@ -1,13 +1,12 @@
 package it.sitissimo.validation.service.impl;
 
-import it.sitissimo.validation.service.RvRuleService;
 import it.sitissimo.validation.domain.RvRule;
 import it.sitissimo.validation.repository.RvRuleRepository;
+import it.sitissimo.validation.service.RvRuleService;
 import it.sitissimo.validation.service.dto.RvRuleDTO;
 import it.sitissimo.validation.service.mapper.RvRuleMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -59,6 +58,14 @@ public class RvRuleServiceImpl implements RvRuleService {
     public Optional<RvRuleDTO> findOne(Long id) {
         log.debug("Request to get RvRule : {}", id);
         return rvRuleRepository.findOneWithEagerRelationships(id)
+            .map(rvRuleMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<RvRuleDTO> findOne(String ruleCode) {
+        log.debug("Request to get RvRule : {}", ruleCode);
+        return rvRuleRepository.findOneWithEagerRelationships(ruleCode)
             .map(rvRuleMapper::toDto);
     }
 

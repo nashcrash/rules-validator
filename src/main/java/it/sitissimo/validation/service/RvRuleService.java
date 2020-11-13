@@ -1,7 +1,6 @@
 package it.sitissimo.validation.service;
 
 import it.sitissimo.validation.service.dto.RvRuleDTO;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -43,6 +42,14 @@ public interface RvRuleService {
      * @return the entity.
      */
     Optional<RvRuleDTO> findOne(Long id);
+
+    /**
+     * Get the "ruleCode" rvRule.
+     *
+     * @param id the id of the entity.
+     * @return the entity.
+     */
+    Optional<RvRuleDTO> findOne(String ruleCode);
 
     /**
      * Delete the "id" rvRule.
