@@ -5,7 +5,7 @@ import it.sitissimo.validation.br.ExpressionLanguageBR;
 import it.sitissimo.validation.domain.enumeration.RvRuleMode;
 import it.sitissimo.validation.service.dto.RvRuleDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDetailDTO;
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

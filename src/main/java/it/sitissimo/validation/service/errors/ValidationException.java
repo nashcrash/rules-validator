@@ -1,4 +1,4 @@
-package it.sitissimo.validation.web.rest.errors;
+package it.sitissimo.validation.service.errors;
 
 public class ValidationException extends RuntimeException {
     private String message;

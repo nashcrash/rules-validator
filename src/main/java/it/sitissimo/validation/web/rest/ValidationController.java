@@ -3,7 +3,7 @@ package it.sitissimo.validation.web.rest;
 import it.sitissimo.validation.service.ValidationService;
 import it.sitissimo.validation.service.dto.RvValidationRequestDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDTO;
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

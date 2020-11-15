@@ -6,19 +6,27 @@ import it.sitissimo.validation.service.dto.RvValidationResultDetailDTO;
 import it.sitissimo.validation.service.errors.ValidationException;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.List;
 
-@Component(GenericOperator.Names.greaterOrEqualsOperator)
-public class GreaterOrEqualsOperator extends AbstractOperator implements GenericOperator {
+@Component(GenericOperator.Names.sizeEqOperator)
+public class SizeEqualsOperator extends AbstractOperator implements GenericOperator {
 
     @Override
     public List<RvValidationResultDetailDTO> validate(Object[] params, JsonNode jsonNode, RvRuleDTO ruleDTO) throws ValidationException {
         checkParams(params, 2);
+        boolean valid = false;
 
-        if (((Comparable) params[0]).compareTo((Comparable) params[1]) >= 0) {
+        Number number = (Number) params[1];
+        if (params[0] instanceof String) {
+            valid = ((String) params[0]).length() == number.intValue();
+        } else if (params[0] instanceof Collection<?>) {
+            valid = ((Collection<?>) params[0]).size() == number.intValue();
+        }
+        if (valid) {
             return makeValidResponse();
         } else {
-            return makeRvValidationResultDetailDTO(GenericOperator.Names.greaterOrEqualsOperator, params, jsonNode, ruleDTO);
+            return makeRvValidationResultDetailDTO(Names.sizeEqOperator, params, jsonNode, ruleDTO);
         }
     }
 }

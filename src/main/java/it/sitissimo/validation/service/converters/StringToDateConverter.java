@@ -1,6 +1,6 @@
 package it.sitissimo.validation.service.converters;
 
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;

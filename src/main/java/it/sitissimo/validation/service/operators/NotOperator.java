@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import it.sitissimo.validation.br.ApplyRuleBR;
 import it.sitissimo.validation.service.dto.RvRuleDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDetailDTO;
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;

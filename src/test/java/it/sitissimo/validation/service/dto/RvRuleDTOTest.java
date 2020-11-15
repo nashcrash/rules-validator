@@ -1,14 +1,15 @@
 package it.sitissimo.validation.service.dto;
 
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 import it.sitissimo.validation.web.rest.TestUtil;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RvRuleDTOTest {
 
     @Test
     public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(RvRuleDTO.class);
+        TestUtil.equalsVerifier(RvRuleDTO.class, true);
         RvRuleDTO rvRuleDTO1 = new RvRuleDTO();
         rvRuleDTO1.setId(1L);
         RvRuleDTO rvRuleDTO2 = new RvRuleDTO();

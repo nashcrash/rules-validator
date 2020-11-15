@@ -1,6 +1,6 @@
 package it.sitissimo.validation.service.converters;
 
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 
 public interface GenericConverter {
     Object convert(Object evaluate) throws ValidationException;

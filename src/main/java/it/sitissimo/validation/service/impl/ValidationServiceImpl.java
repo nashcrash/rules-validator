@@ -11,7 +11,7 @@ import it.sitissimo.validation.service.dto.RvRuleDTO;
 import it.sitissimo.validation.service.dto.RvValidationRequestDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDetailDTO;
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

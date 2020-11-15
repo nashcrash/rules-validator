@@ -3,7 +3,7 @@ package it.sitissimo.validation.service.operators;
 import com.fasterxml.jackson.databind.JsonNode;
 import it.sitissimo.validation.service.dto.RvRuleDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDetailDTO;
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 
 import java.util.List;
 
@@ -33,5 +33,10 @@ public interface GenericOperator {
         String notOperator = "notOperator";
         String trueOperator = "trueOperator";
         String falseOperator = "falseOperator";
+        String sizeGtOperator = "sizeGtOperator";
+        String sizeGeOperator = "sizeGeOperator";
+        String sizeLtOperator = "sizeLtOperator";
+        String sizeLeOperator = "sizeLeOperator";
+        String sizeEqOperator = "sizeEqOperator";
     }
 }

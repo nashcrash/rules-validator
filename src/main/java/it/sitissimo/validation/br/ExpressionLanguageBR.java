@@ -1,12 +1,14 @@
 package it.sitissimo.validation.br;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import it.sitissimo.validation.service.RvRuleService;
 import it.sitissimo.validation.service.dto.RvRuleDTO;
-import it.sitissimo.validation.web.rest.errors.ValidationException;
+import it.sitissimo.validation.service.errors.ValidationException;
 import lombok.Data;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.reflect.MethodUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
@@ -134,8 +136,6 @@ public class ExpressionLanguageBR {
         return oggetto;
     }
 
-
-
     private NodoEl evaluateLogicalExpression(List<NodoEl> nodes) throws ValidationException {
         NodoEl result=null;
         if (nodes.size()<=0) {
@@ -147,13 +147,20 @@ public class ExpressionLanguageBR {
             result.setLeft(nodes.get(0));
             result.setRight(nodes.get(2));
         } else if (nodes.get(3).isOperatore()) {
-            result= nodes.get(3);
-            NodoEl left=evaluateLogicalExpression(nodes.subList(0, 3));
-            NodoEl right=evaluateLogicalExpression(nodes.subList(4, nodes.size()));
+            result = nodes.get(3);
+            NodoEl left = evaluateLogicalExpression(nodes.subList(0, 3));
+            NodoEl right = evaluateLogicalExpression(nodes.subList(4, nodes.size()));
             result.setLeft(left);
             result.setRight(right);
         }
         return result;
+    }
+
+    @Autowired
+    private RvRuleService rvRuleService;
+
+    public RvRuleDTO rule(String ruleName) {
+        return rvRuleService.findOne(ruleName).orElse(null);
     }
 }
 
