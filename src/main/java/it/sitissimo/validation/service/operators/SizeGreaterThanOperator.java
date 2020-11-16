@@ -17,11 +17,11 @@ public class SizeGreaterThanOperator extends AbstractOperator implements Generic
         checkParams(params, 2);
         boolean valid = false;
 
-        Number number = (Number) params[1];
+        int number = Integer.parseInt(String.valueOf(params[1]));
         if (params[0] instanceof String) {
-            valid = ((String) params[0]).length() > number.intValue();
+            valid = ((String) params[0]).length() > number;
         } else if (params[0] instanceof Collection<?>) {
-            valid = ((Collection<?>) params[0]).size() > number.intValue();
+            valid = ((Collection<?>) params[0]).size() > number;
         }
         if (valid) {
             return makeValidResponse();

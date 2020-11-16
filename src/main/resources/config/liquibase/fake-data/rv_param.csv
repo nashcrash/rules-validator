@@ -1,2 +1,7 @@
 id;value
-
+1;#{el.rule(test_name)}
+2;#{el.rule(test_description)}
+3;#{model.name}
+4;admin
+5;#{model.description}
+6;50

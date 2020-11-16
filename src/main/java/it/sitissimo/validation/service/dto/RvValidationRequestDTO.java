@@ -13,5 +13,5 @@ public class RvValidationRequestDTO implements Serializable {
     @NotNull
     private String ruleCode;
     @NotNull
-    private String modelJson;
+    private String model;
 }

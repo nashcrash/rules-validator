@@ -27,4 +27,9 @@ public interface RvRuleMapper extends EntityMapper<RvRuleDTO, RvRule> {
         rvRule.setId(id);
         return rvRule;
     }
+
+    @Mappings({
+        @Mapping(source = "id", target = "id", ignore = true),
+    })
+    RvRuleDTO clone(RvRuleDTO dto);
 }

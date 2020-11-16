@@ -12,6 +12,7 @@ import java.io.Serializable;
 public class RvValidationResultDetailDTO implements Serializable {
     private String ruleCode;
     private RvRuleLevel level;
+    private String operatorCode;
     private String description;
     private String message;
     private Object[] attributes;

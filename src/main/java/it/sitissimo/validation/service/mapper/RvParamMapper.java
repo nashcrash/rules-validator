@@ -1,10 +1,11 @@
 package it.sitissimo.validation.service.mapper;
 
 
-import it.sitissimo.validation.domain.*;
+import it.sitissimo.validation.domain.RvParam;
 import it.sitissimo.validation.service.dto.RvParamDTO;
-
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 /**
  * Mapper for the entity {@link RvParam} and its DTO {@link RvParamDTO}.
@@ -26,4 +27,9 @@ public interface RvParamMapper extends EntityMapper<RvParamDTO, RvParam> {
         rvParam.setId(id);
         return rvParam;
     }
+
+    @Mappings({
+        @Mapping(source = "id", target = "id", ignore = true),
+    })
+    RvParamDTO clone(RvParamDTO dto);
 }

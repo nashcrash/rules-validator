@@ -3,8 +3,10 @@ package it.sitissimo.validation.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import it.sitissimo.validation.br.ApplyRuleBR;
 import it.sitissimo.validation.domain.RvOperator;
+import it.sitissimo.validation.domain.enumeration.EFormat;
 import it.sitissimo.validation.service.RvRuleService;
 import it.sitissimo.validation.service.ValidationService;
 import it.sitissimo.validation.service.dto.RvRuleDTO;
@@ -33,6 +35,8 @@ public class ValidationServiceImpl implements ValidationService {
     @Autowired
     private ObjectMapper objectMapper;
 
+    private XmlMapper xmlMapper = new XmlMapper();
+
     @Autowired
     private RvRuleService rvRuleService;
 
@@ -41,10 +45,15 @@ public class ValidationServiceImpl implements ValidationService {
 
     @Override
     @Transactional(readOnly = true)
-    public RvValidationResultDTO validate(RvValidationRequestDTO validationRequestDTO) throws ValidationException {
+    public RvValidationResultDTO validate(EFormat format, RvValidationRequestDTO validationRequestDTO) throws ValidationException {
         RvValidationResultDTO resultDTO = new RvValidationResultDTO();
         try {
-            JsonNode model = objectMapper.readTree(validationRequestDTO.getModelJson());
+            JsonNode model = null;
+            if (EFormat.XML.equals(format)) {
+                model = xmlMapper.readTree(validationRequestDTO.getModel());
+            } else {
+                model = objectMapper.readTree(validationRequestDTO.getModel());
+            }
             RvRuleDTO ruleDTO = rvRuleService.findOne(validationRequestDTO.getRuleCode()).orElse(null);
             if (ruleDTO == null) {
                 throw new ValidationException("Rule not found: " + validationRequestDTO.getRuleCode());

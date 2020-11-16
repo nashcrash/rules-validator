@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="autoIncrement" value="true"/>
+
+    <changeSet id="20201113193900-1-data" author="jhipster">
+        <loadData
+            file="config/liquibase/fake-data/rv_operator.csv"
+            separator=";"
+            tableName="rv_operator">
+            <column name="id" type="numeric"/>
+            <column name="operator_code" type="string"/>
+            <column name="description" type="string"/>
+            <column name="bean_name" type="string"/>
+            <column name="number_of_params" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+        <loadData
+            file="config/liquibase/fake-data/rv_converter.csv"
+            separator=";"
+            tableName="rv_converter">
+            <column name="id" type="numeric"/>
+            <column name="converter_code" type="string"/>
+            <column name="description" type="string"/>
+            <column name="bean_name" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+    <changeSet id="20201113193900-2-data" author="jhipster" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/rv_param.csv"
+            separator=";"
+            tableName="rv_param">
+            <column name="id" type="numeric"/>
+            <column name="value" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+        <loadData
+            file="config/liquibase/fake-data/rv_rule.csv"
+            separator=";"
+            tableName="rv_rule">
+            <column name="id" type="numeric"/>
+            <column name="rule_code" type="string"/>
+            <column name="description" type="string"/>
+            <column name="level" type="string"/>
+            <column name="mode" type="string"/>
+            <column name="operator_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+    <changeSet id="20201113193900-3-data" author="jhipster" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/rv_rule_rv_param.csv"
+            separator=";"
+            tableName="rv_rule_rv_param">
+            <column name="rv_param_id" type="numeric"/>
+            <column name="rv_rule_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

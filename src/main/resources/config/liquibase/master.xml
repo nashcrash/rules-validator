@@ -21,6 +21,7 @@
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20201112092940_added_entity_constraints_RvRule.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201112093140_added_entity_constraints_RvParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201113193900_load_data.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

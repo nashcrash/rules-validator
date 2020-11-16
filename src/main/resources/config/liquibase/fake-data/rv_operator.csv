@@ -14,10 +14,16 @@ id;operator_code;description;bean_name;number_of_params
 13;existsEquals;Exists Equals Operator;existsEqualsOperator;3
 14;existsLesserThan;Exists Lesser Than Operator;existsLesserThanOperator;3
 15;existsGreaterThan;Exists Greater Than Operator;existsGreaterThanOperator;3
-16;unique;Unique Operator;uniqueOperator;-3
+16;unique;Unique Operator;uniqueOperator;2
 17;ifElse;If Else Operator;ifElseOperator;-2
 18;and;And Operator;andOperator;-2
 19;or;Or Operator;orOperator;-2
 20;not;Not Operator;notOperator;1
 21;true;True Operator;trueOperator;0
 22;false;False Operator;falseOperator;0
+23;sizeGt;Size Greater Than Operator;sizeGtOperator;2
+24;sizeGe;Size Greater or Equals Operator;sizeGeOperator;2
+25;sizeLt;Size Lesser Than Operator;sizeLtOperator;2
+26;sizeLe;Size Lesser or Equals Operator;sizeLeOperator;2
+27;sizeEq;Size Equals operator;sizeEqOperator;2
+

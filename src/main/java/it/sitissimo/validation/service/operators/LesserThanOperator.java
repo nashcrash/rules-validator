@@ -15,7 +15,10 @@ public class LesserThanOperator extends AbstractOperator implements GenericOpera
     public List<RvValidationResultDetailDTO> validate(Object[] params, JsonNode jsonNode, RvRuleDTO ruleDTO) throws ValidationException {
         checkParams(params, 2);
 
-        if (((Comparable) params[0]).compareTo((Comparable) params[1]) < 0) {
+        Comparable ref1 = (Comparable) params[0];
+        Comparable ref2 = (Comparable) params[1];
+
+        if (ref1.compareTo(ref2) < 0) {
             return makeValidResponse();
         } else {
             return makeRvValidationResultDetailDTO(GenericOperator.Names.lesserThanOperator, params, jsonNode, ruleDTO);

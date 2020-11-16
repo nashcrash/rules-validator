@@ -6,6 +6,7 @@ import it.sitissimo.validation.service.dto.RvValidationResultDetailDTO;
 import it.sitissimo.validation.service.errors.ValidationException;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.List;
 
 @Component(GenericOperator.Names.notExistsOperator)
@@ -15,10 +16,19 @@ public class NotExistsOperator extends AbstractOperator implements GenericOperat
     public List<RvValidationResultDetailDTO> validate(Object[] params, JsonNode jsonNode, RvRuleDTO ruleDTO) throws ValidationException {
         checkParams(params, 2);
 
-        if (params[0].equals(params[1])) {
+        Collection<? extends JsonNode> collection = (Collection<? extends JsonNode>) params[0];
+        RvRuleDTO rvRuleDTO = (RvRuleDTO) params[1];
+
+        boolean valid = false;
+        int found = checkRuleOnCollection(rvRuleDTO, collection, 1);
+        if (found == 0) {
+            valid = true;
+        }
+
+        if (valid) {
             return makeValidResponse();
         } else {
-            return makeRvValidationResultDetailDTO(GenericOperator.Names.equalsOperator, params, jsonNode, ruleDTO);
+            return makeRvValidationResultDetailDTO(GenericOperator.Names.notExistsOperator, params, jsonNode, ruleDTO);
         }
     }
 }

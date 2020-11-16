@@ -13,12 +13,14 @@ public class IsNullOperator extends AbstractOperator implements GenericOperator 
 
     @Override
     public List<RvValidationResultDetailDTO> validate(Object[] params, JsonNode jsonNode, RvRuleDTO ruleDTO) throws ValidationException {
-        checkParams(params, 2);
+        checkParams(params, 1);
 
-        if (params[0].equals(params[1])) {
+        Object ref1 = params[0];
+
+        if (ref1 == null) {
             return makeValidResponse();
         } else {
-            return makeRvValidationResultDetailDTO(GenericOperator.Names.equalsOperator, params, jsonNode, ruleDTO);
+            return makeRvValidationResultDetailDTO(GenericOperator.Names.isNullOperator, params, jsonNode, ruleDTO);
         }
     }
 }

@@ -19,7 +19,9 @@ public class NotOperator extends AbstractOperator implements GenericOperator {
     @Override
     public List<RvValidationResultDetailDTO> validate(Object[] params, JsonNode jsonNode, RvRuleDTO ruleDTO) throws ValidationException {
         checkParams(params, 1);
-        List<RvValidationResultDetailDTO> detailDTOS = applyRuleBR.applyRule((RvRuleDTO) params[0], jsonNode);
+        RvRuleDTO rvRuleDTO = (RvRuleDTO) params[0];
+
+        List<RvValidationResultDetailDTO> detailDTOS = applyRuleBR.applyRule(rvRuleDTO, jsonNode);
         if (!CollectionUtils.isEmpty(detailDTOS)) {
             return makeValidResponse();
         } else {
