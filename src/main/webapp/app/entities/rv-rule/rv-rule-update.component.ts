@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 import { IRvRule, RvRule } from 'app/shared/model/rv-rule.model';
 import { RvRuleService } from './rv-rule.service';
-import { IRvOperator } from 'app/shared/model/rv-operator.model';
+import { IRvOperator, RvOperator } from 'app/shared/model/rv-operator.model';
 import { RvOperatorService } from 'app/entities/rv-operator/rv-operator.service';
 import { IRvParam } from 'app/shared/model/rv-param.model';
 import { RvParamService } from 'app/entities/rv-param/rv-param.service';
@@ -58,7 +58,7 @@ export class RvRuleUpdateComponent implements OnInit {
       description: rvRule.description,
       level: rvRule.level,
       mode: rvRule.mode,
-      operatorId: rvRule.operatorId,
+      operatorId: (rvRule.operator) ? rvRule.operator.id : undefined,
       rvParams: rvRule.rvParams,
     });
   }
@@ -85,7 +85,7 @@ export class RvRuleUpdateComponent implements OnInit {
       description: this.editForm.get(['description'])!.value,
       level: this.editForm.get(['level'])!.value,
       mode: this.editForm.get(['mode'])!.value,
-      operatorId: this.editForm.get(['operatorId'])!.value,
+      operator: new RvOperator(this.editForm.get(['operatorId'])!.value),
       rvParams: this.editForm.get(['rvParams'])!.value,
     };
   }

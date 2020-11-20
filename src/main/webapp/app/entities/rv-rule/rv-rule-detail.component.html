@@ -26,8 +26,8 @@
                 </dd>
                 <dt><span jhiTranslate="rulesValidatorApp.rvRule.operator">Operator</span></dt>
                 <dd>
-                    <div *ngIf="rvRule.operatorId">
-                        <a [routerLink]="['/rv-operator', rvRule.operatorId, 'view']">{{ rvRule.operatorId }}</a>
+                    <div *ngIf="rvRule.operator">
+                        <a [routerLink]="['/rv-operator', rvRule.operator.id, 'view']">{{ rvRule.operator.id }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="rulesValidatorApp.rvRule.rvParam">Rv Param</span></dt>

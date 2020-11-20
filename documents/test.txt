@@ -1,0 +1,24 @@
+{
+  "model": "{\"name\":\"prova\",\"description\":\"prova testo piu' lungo di 5o caratteri, prova testo piu' lungo di 5o caratteri\"}",
+  "ruleCode": "test"
+}
+
+{
+  "model": "{\"name\":\"admin\",\"description\":\"prova testo piu' lungo di 5o caratteri, prova testo piu' lungo di 5o caratteri\"}",
+  "ruleCode": "test"
+}
+
+{
+  "model": "{\"name\":\"admin\",\"description\":\"prova testo corto\"}",
+  "ruleCode": "test"
+}
+
+{
+  "model": "<root name=\"test\"><description>prova testo corto</description></root>",
+  "ruleCode": "test"
+}
+
+{
+  "model": "<subject><name>admin</name><surname>test</surname><description>prova testo corto</description><contacts><contact type=\"email\" value=\"admin@prova.com\"/><contact type=\"email\" value=\"info@prova.com\"/><contact type=\"email\" value=\"admin@prova.com\"/></contacts></subject>",
+  "ruleCode": "test"
+}

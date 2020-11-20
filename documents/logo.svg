@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="182.50441"
+     inkscape:cy="554.07473"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1406"
+     inkscape:window-height="1040"
+     inkscape:window-x="156"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Livello 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#ff0000;fill-rule:evenodd;stroke-width:0.264583"
+       id="path10"
+       cx="55.111473"
+       cy="82.634598"
+       r="37.041668" />
+    <path
+       style="fill:#00ff30;fill-opacity:1;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 35.967036,77.18578 c -4.130102,-4.119181 -12.257531,2.252341 -7.131228,7.56763 6.841682,7.093909 13.41815,14.126859 17.197915,17.90662 1.357633,1.35763 2.770497,1.01193 3.864521,-0.1333 C 53.539921,98.714589 81.67116,70.290029 81.67116,70.290029 85.871635,66.302165 79.540244,57.813882 73.573527,63.803086 L 47.999354,89.473639 c 0,0 -9.23835,-9.501279 -12.032318,-12.287859 z"
+       id="path859"
+       sodipodi:nodetypes="sssscscs" />
+    <path
+       id="rect898"
+       style="fill:#7bb802;fill-opacity:1;stroke:#1ff400;stroke-width:0.472777;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 70.13849,90.827613 c -0.86624,0 -1.56361,0.69737 -1.56361,1.56361 v 4.601412 h -4.60141 c -0.866241,0 -1.563611,0.697372 -1.563611,1.563612 0,0.86624 0.69737,1.563613 1.563611,1.563613 h 4.60141 v 4.60165 c 0,0.86624 0.69737,1.56361 1.56361,1.56361 0.866241,0 1.56361,-0.69737 1.56361,-1.56361 v -4.60165 h 4.601656 c 0.866239,0 1.563609,-0.697373 1.563609,-1.563613 0,-0.86624 -0.69737,-1.563612 -1.563609,-1.563612 H 71.7021 v -4.601412 c 0,-0.86624 -0.697369,-1.56361 -1.56361,-1.56361 z" />
+    <g
+       id="g956"
+       inkscape:export-filename="C:\Users\Protom\prj\personal\rules-validator\src\main\webapp\content\images\logo-jhipster.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         id="path10-5"
+         style="fill:#7bb802;fill-rule:evenodd;stroke-width:0.999999;fill-opacity:1"
+         d="M 211.09766 476.69727 A 140.00001 140.00001 0 0 0 71.121094 616.69727 A 140.00001 140.00001 0 0 0 211.12109 756.69727 A 140.00001 140.00001 0 0 0 351.12109 616.69727 A 140.00001 140.00001 0 0 0 211.12109 476.69727 A 140.00001 140.00001 0 0 0 211.09766 476.69727 z M 297.42773 537.68555 C 312.92763 537.86531 323.41271 558.73682 311.50586 570.04102 C 311.50586 570.04102 205.18179 677.47277 191.41797 691.88086 C 187.28308 696.20929 181.94371 697.51597 176.8125 692.38477 C 162.52677 678.09906 137.67083 651.51866 111.8125 624.70703 C 92.437497 604.61775 123.15579 580.53496 138.76562 596.10352 C 149.3255 606.63547 184.24219 642.54688 184.24219 642.54688 L 280.90039 545.52344 C 286.53823 539.86434 292.2611 537.62563 297.42773 537.68555 z "
+         transform="scale(0.26458333)" />
+      <path
+         id="rect898-3"
+         style="fill:#7bb802;fill-opacity:1;stroke:#1ff400;stroke-width:0.472776;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 70.983807,168.69161 c -0.86624,0 -1.56361,0.69737 -1.56361,1.56361 v 4.60142 h -4.60141 c -0.866241,0 -1.563611,0.69737 -1.563611,1.56361 0,0.86624 0.69737,1.56361 1.563611,1.56361 h 4.60141 v 4.60165 c 0,0.86624 0.69737,1.56361 1.56361,1.56361 0.866241,0 1.56361,-0.69737 1.56361,-1.56361 v -4.60165 h 4.601656 c 0.866239,0 1.563609,-0.69737 1.563609,-1.56361 0,-0.86624 -0.69737,-1.56361 -1.563609,-1.56361 h -4.601656 v -4.60142 c 0,-0.86624 -0.697369,-1.56361 -1.56361,-1.56361 z" />
+    </g>
+  </g>
+</svg>

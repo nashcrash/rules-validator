@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,7 +39,7 @@ public class ExpressionLanguageBR {
     }
 
     private boolean isComplex(Object result) {
-        boolean b = ((result == null) || (result instanceof String) || (result instanceof Number) || (result instanceof Boolean) || (result instanceof Date));
+        boolean b = (result == null) || (result instanceof String);
         return !b;
     }
 
