@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "Benvenuto, Java Hipster!",
-    "subtitle": "Questa è la tua home page",
+    "title": "Benvenuto su Rules Validator!",
+    "subtitle": "Questa è la home page",
     "logged": {
       "message": "Autenticato come \"{{username}}\"."
     },
