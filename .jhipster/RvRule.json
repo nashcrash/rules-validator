@@ -1,0 +1,61 @@
+{
+  "name": "RvRule",
+  "fields": [
+    {
+      "fieldName": "ruleCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "RvRuleLevel",
+      "fieldValues": "CRITICAL,WARNING",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mode",
+      "fieldType": "RvRuleMode",
+      "fieldValues": "FIRST_ERROR,ALL_VALIDATION",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "rvRuleGroup",
+      "otherEntityRelationshipName": "rvRule",
+      "relationshipName": "group",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "rvOperator",
+      "otherEntityRelationshipName": "rvRule",
+      "relationshipName": "operator",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "rvParam",
+      "otherEntityRelationshipName": "rvRule",
+      "relationshipName": "rvParam",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201202092551",
+  "entityTableName": "rv_rule",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -14,7 +14,16 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092451_added_entity_RvRuleGroup.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092551_added_entity_RvRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092651_added_entity_RvOperator.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092751_added_entity_RvOperatorParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092851_added_entity_RvParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092951_added_entity_RvConverter.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20201202092551_added_entity_constraints_RvRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092751_added_entity_constraints_RvOperatorParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092851_added_entity_constraints_RvParam.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>
