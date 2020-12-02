@@ -1,12 +1,16 @@
 package it.sitissimo.validation.web.rest;
 
-import it.sitissimo.validation.service.RvRuleGroupService;
-import it.sitissimo.validation.web.rest.errors.BadRequestAlertException;
-import it.sitissimo.validation.service.dto.RvRuleGroupDTO;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import it.sitissimo.validation.service.RvRuleGroupService;
+import it.sitissimo.validation.service.dto.RvRuleGroupDTO;
+import it.sitissimo.validation.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,15 +18,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * REST controller for managing {@link it.sitissimo.validation.domain.RvRuleGroup}.
@@ -30,7 +28,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class RvRuleGroupResource {
-
     private final Logger log = LoggerFactory.getLogger(RvRuleGroupResource.class);
 
     private static final String ENTITY_NAME = "rvRuleGroup";
@@ -58,7 +55,8 @@ public class RvRuleGroupResource {
             throw new BadRequestAlertException("A new rvRuleGroup cannot already have an ID", ENTITY_NAME, "idexists");
         }
         RvRuleGroupDTO result = rvRuleGroupService.save(rvRuleGroupDTO);
-        return ResponseEntity.created(new URI("/api/rv-rule-groups/" + result.getId()))
+        return ResponseEntity
+            .created(new URI("/api/rv-rule-groups/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
@@ -79,7 +77,8 @@ public class RvRuleGroupResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         RvRuleGroupDTO result = rvRuleGroupService.save(rvRuleGroupDTO);
-        return ResponseEntity.ok()
+        return ResponseEntity
+            .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, rvRuleGroupDTO.getId().toString()))
             .body(result);
     }
@@ -121,6 +120,9 @@ public class RvRuleGroupResource {
     public ResponseEntity<Void> deleteRvRuleGroup(@PathVariable Long id) {
         log.debug("REST request to delete RvRuleGroup : {}", id);
         rvRuleGroupService.delete(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .build();
     }
 }

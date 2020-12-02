@@ -1,8 +1,9 @@
 package it.sitissimo.validation.domain;
 
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+
 import it.sitissimo.validation.web.rest.TestUtil;
+import org.junit.jupiter.api.Test;
 
 public class RvOperatorParamTest {
 

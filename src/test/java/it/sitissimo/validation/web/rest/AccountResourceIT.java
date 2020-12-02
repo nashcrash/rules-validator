@@ -2,8 +2,11 @@ package it.sitissimo.validation.web.rest;
 
 import static it.sitissimo.validation.web.rest.AccountResourceIT.TEST_USER_LOGIN;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import it.sitissimo.validation.RulesValidatorApp;
 import it.sitissimo.validation.config.Constants;
@@ -17,15 +20,15 @@ import it.sitissimo.validation.service.dto.UserDTO;
 import it.sitissimo.validation.web.rest.vm.KeyAndPasswordVM;
 import it.sitissimo.validation.web.rest.vm.ManagedUserVM;
 import java.time.Instant;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -116,6 +119,28 @@ public class AccountResourceIT {
             .andExpect(status().isInternalServerError());
     }
 
+    @Test
+    @Transactional
+    public void testRegisterDisabled() throws Exception {
+        ManagedUserVM validUser = new ManagedUserVM();
+        validUser.setLogin("test-register-valid");
+        validUser.setPassword("password");
+        validUser.setFirstName("Alice");
+        validUser.setLastName("Test");
+        validUser.setEmail("test-register-valid@example.com");
+        validUser.setImageUrl("http://placehold.it/50x50");
+        validUser.setLangKey(Constants.DEFAULT_LANGUAGE);
+        validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        assertThat(userRepository.findOneByLogin("test-register-valid").isPresent()).isFalse();
+
+        restAccountMockMvc
+            .perform(post("/api/register").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(validUser)))
+            .andExpect(status().isForbidden());
+
+        assertThat(userRepository.findOneByLogin("test-register-valid").isPresent()).isFalse();
+    }
+
+    /*
     @Test
     @Transactional
     public void testRegisterValid() throws Exception {
@@ -377,6 +402,7 @@ public class AccountResourceIT {
             .hasSize(1)
             .containsExactly(authorityRepository.findById(AuthoritiesConstants.USER).get());
     }
+    */
 
     @Test
     @Transactional

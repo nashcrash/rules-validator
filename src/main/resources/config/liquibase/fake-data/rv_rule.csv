@@ -1,11 +1,4 @@
-id;rule_code;description;level;mode
-1;New Jersey Plastic neural;sensor Division;CRITICAL;ALL_VALIDATION
-2;bandwidth solid state multi-tasking;Lempira Incredible invoice;CRITICAL;ALL_VALIDATION
-3;niches Profit-focused generate;Phased Savings Account;CRITICAL;FIRST_ERROR
-4;back up Trafficway;RAM turquoise Austria;WARNING;ALL_VALIDATION
-5;Groves Intelligent Concrete Chair Avon;parsing Music Checking Account;WARNING;FIRST_ERROR
-6;Multi-tiered;Analyst;CRITICAL;ALL_VALIDATION
-7;model programming;generating payment Gorgeous Concrete Towels;CRITICAL;ALL_VALIDATION
-8;core Pizza;Colombian Peso Unidad de Valor Real New Hampshire connect;WARNING;ALL_VALIDATION
-9;SMTP;Ergonomic Soft Cheese Platinum Borders;CRITICAL;ALL_VALIDATION
-10;seize;Alaska Bedfordshire compressing;WARNING;FIRST_ERROR
+id;rule_code;description;level;mode;group_id;operator_id
+1;test;Test;CRITICAL;ALL_VALIDATION;1;18
+2;test_name;Test Name;CRITICAL;ALL_VALIDATION;1;1
+3;test_description;Test Description;CRITICAL;ALL_VALIDATION;1;26

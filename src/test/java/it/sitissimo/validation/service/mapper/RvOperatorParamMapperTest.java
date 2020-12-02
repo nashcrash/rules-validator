@@ -1,11 +1,11 @@
 package it.sitissimo.validation.service.mapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RvOperatorParamMapperTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+public class RvOperatorParamMapperTest {
     private RvOperatorParamMapper rvOperatorParamMapper;
 
     @BeforeEach

@@ -1,9 +1,7 @@
 package it.sitissimo.validation.service.mapper;
 
-
 import it.sitissimo.validation.domain.*;
 import it.sitissimo.validation.service.dto.RvConverterDTO;
-
 import org.mapstruct.*;
 
 /**
@@ -11,8 +9,6 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface RvConverterMapper extends EntityMapper<RvConverterDTO, RvConverter> {
-
-
     @Mapping(target = "rvParams", ignore = true)
     @Mapping(target = "removeRvParam", ignore = true)
     RvConverter toEntity(RvConverterDTO rvConverterDTO);
@@ -25,4 +21,7 @@ public interface RvConverterMapper extends EntityMapper<RvConverterDTO, RvConver
         rvConverter.setId(id);
         return rvConverter;
     }
+
+    @Mappings({ @Mapping(source = "id", target = "id", ignore = true) })
+    RvConverterDTO clone(RvConverterDTO dto);
 }

@@ -1,19 +1,17 @@
 package it.sitissimo.validation.service.dto;
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link it.sitissimo.validation.domain.RvRuleGroup} entity.
  */
 public class RvRuleGroupDTO implements Serializable {
-    
     private Long id;
 
     @NotNull
     private String ruleGroupName;
 
-    
     public Long getId() {
         return id;
     }

@@ -1,7 +1,6 @@
 package it.sitissimo.validation.repository;
 
 import it.sitissimo.validation.domain.RvRuleGroup;
-
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface RvRuleGroupRepository extends JpaRepository<RvRuleGroup, Long> {
-}
+public interface RvRuleGroupRepository extends JpaRepository<RvRuleGroup, Long> {}

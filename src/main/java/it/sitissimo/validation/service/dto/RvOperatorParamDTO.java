@@ -1,14 +1,13 @@
 package it.sitissimo.validation.service.dto;
 
-import javax.validation.constraints.*;
-import java.io.Serializable;
 import it.sitissimo.validation.domain.enumeration.RvParamType;
+import java.io.Serializable;
+import javax.validation.constraints.*;
 
 /**
  * A DTO for the {@link it.sitissimo.validation.domain.RvOperatorParam} entity.
  */
 public class RvOperatorParamDTO implements Serializable {
-    
     private Long id;
 
     @NotNull
@@ -19,9 +18,8 @@ public class RvOperatorParamDTO implements Serializable {
     @NotNull
     private RvParamType type;
 
-
     private Long operatorId;
-    
+
     public Long getId() {
         return id;
     }

@@ -1,12 +1,10 @@
 package it.sitissimo.validation.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
-import java.io.Serializable;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A RvRuleGroup.
@@ -15,7 +13,6 @@ import java.io.Serializable;
 @Table(name = "rv_rule_group")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class RvRuleGroup implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -47,6 +44,7 @@ public class RvRuleGroup implements Serializable {
     public void setRuleGroupName(String ruleGroupName) {
         this.ruleGroupName = ruleGroupName;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

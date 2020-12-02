@@ -1,25 +1,26 @@
 package it.sitissimo.validation.web.rest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import java.io.IOException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeParseException;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Utility class for testing REST controllers.
@@ -104,6 +105,13 @@ public final class TestUtil {
      * Verifies the equals/hashcode contract on the domain object.
      */
     public static <T> void equalsVerifier(Class<T> clazz) throws Exception {
+        equalsVerifier(clazz, false);
+    }
+
+    /**
+     * Verifies the equals/hashcode contract on the domain object.
+     */
+    public static <T> void equalsVerifier(Class<T> clazz, boolean sameOverInstance) throws Exception {
         T domainObject1 = clazz.getConstructor().newInstance();
         assertThat(domainObject1.toString()).isNotNull();
         assertThat(domainObject1).isEqualTo(domainObject1);
@@ -114,7 +122,11 @@ public final class TestUtil {
         assertThat(domainObject1).isNotEqualTo(null);
         // Test with an instance of the same class
         T domainObject2 = clazz.getConstructor().newInstance();
-        assertThat(domainObject1).isNotEqualTo(domainObject2);
+        if (sameOverInstance) {
+            assertThat(domainObject1).isEqualTo(domainObject2);
+        } else {
+            assertThat(domainObject1).isNotEqualTo(domainObject2);
+        }
         // HashCodes are equals because the objects are not persisted yet
         assertThat(domainObject1.hashCode()).isEqualTo(domainObject2.hashCode());
     }

@@ -1,17 +1,14 @@
 package it.sitissimo.validation.service;
 
 import it.sitissimo.validation.service.dto.RvOperatorParamDTO;
-
+import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.util.Optional;
 
 /**
  * Service Interface for managing {@link it.sitissimo.validation.domain.RvOperatorParam}.
  */
 public interface RvOperatorParamService {
-
     /**
      * Save a rvOperatorParam.
      *
@@ -27,7 +24,6 @@ public interface RvOperatorParamService {
      * @return the list of entities.
      */
     Page<RvOperatorParamDTO> findAll(Pageable pageable);
-
 
     /**
      * Get the "id" rvOperatorParam.

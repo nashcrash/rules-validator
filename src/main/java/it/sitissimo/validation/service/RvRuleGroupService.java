@@ -1,17 +1,14 @@
 package it.sitissimo.validation.service;
 
 import it.sitissimo.validation.service.dto.RvRuleGroupDTO;
-
+import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.util.Optional;
 
 /**
  * Service Interface for managing {@link it.sitissimo.validation.domain.RvRuleGroup}.
  */
 public interface RvRuleGroupService {
-
     /**
      * Save a rvRuleGroup.
      *
@@ -27,7 +24,6 @@ public interface RvRuleGroupService {
      * @return the list of entities.
      */
     Page<RvRuleGroupDTO> findAll(Pageable pageable);
-
 
     /**
      * Get the "id" rvRuleGroup.

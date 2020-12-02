@@ -1,15 +1,12 @@
 package it.sitissimo.validation.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
+import it.sitissimo.validation.domain.enumeration.RvParamType;
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
-import java.io.Serializable;
-
-import it.sitissimo.validation.domain.enumeration.RvParamType;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A RvOperatorParam.
@@ -18,7 +15,6 @@ import it.sitissimo.validation.domain.enumeration.RvParamType;
 @Table(name = "rv_operator_param")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class RvOperatorParam implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -101,6 +97,7 @@ public class RvOperatorParam implements Serializable {
     public void setOperator(RvOperator rvOperator) {
         this.operator = rvOperator;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

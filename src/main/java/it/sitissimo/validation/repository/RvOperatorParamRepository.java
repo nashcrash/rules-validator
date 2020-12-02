@@ -1,7 +1,6 @@
 package it.sitissimo.validation.repository;
 
 import it.sitissimo.validation.domain.RvOperatorParam;
-
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface RvOperatorParamRepository extends JpaRepository<RvOperatorParam, Long> {
-}
+public interface RvOperatorParamRepository extends JpaRepository<RvOperatorParam, Long> {}

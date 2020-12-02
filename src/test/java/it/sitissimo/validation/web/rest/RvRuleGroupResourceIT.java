@@ -1,12 +1,18 @@
 package it.sitissimo.validation.web.rest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import it.sitissimo.validation.RulesValidatorApp;
 import it.sitissimo.validation.domain.RvRuleGroup;
 import it.sitissimo.validation.repository.RvRuleGroupRepository;
 import it.sitissimo.validation.service.RvRuleGroupService;
 import it.sitissimo.validation.service.dto.RvRuleGroupDTO;
 import it.sitissimo.validation.service.mapper.RvRuleGroupMapper;
-
+import java.util.List;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +22,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityManager;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Integration tests for the {@link RvRuleGroupResource} REST controller.
@@ -31,7 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser
 public class RvRuleGroupResourceIT {
-
     private static final String DEFAULT_RULE_GROUP_NAME = "AAAAAAAAAA";
     private static final String UPDATED_RULE_GROUP_NAME = "BBBBBBBBBB";
 
@@ -59,10 +57,10 @@ public class RvRuleGroupResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static RvRuleGroup createEntity(EntityManager em) {
-        RvRuleGroup rvRuleGroup = new RvRuleGroup()
-            .ruleGroupName(DEFAULT_RULE_GROUP_NAME);
+        RvRuleGroup rvRuleGroup = new RvRuleGroup().ruleGroupName(DEFAULT_RULE_GROUP_NAME);
         return rvRuleGroup;
     }
+
     /**
      * Create an updated entity for this test.
      *
@@ -70,8 +68,7 @@ public class RvRuleGroupResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static RvRuleGroup createUpdatedEntity(EntityManager em) {
-        RvRuleGroup rvRuleGroup = new RvRuleGroup()
-            .ruleGroupName(UPDATED_RULE_GROUP_NAME);
+        RvRuleGroup rvRuleGroup = new RvRuleGroup().ruleGroupName(UPDATED_RULE_GROUP_NAME);
         return rvRuleGroup;
     }
 
@@ -86,9 +83,12 @@ public class RvRuleGroupResourceIT {
         int databaseSizeBeforeCreate = rvRuleGroupRepository.findAll().size();
         // Create the RvRuleGroup
         RvRuleGroupDTO rvRuleGroupDTO = rvRuleGroupMapper.toDto(rvRuleGroup);
-        restRvRuleGroupMockMvc.perform(post("/api/rv-rule-groups")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO)))
+        restRvRuleGroupMockMvc
+            .perform(
+                post("/api/rv-rule-groups")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO))
+            )
             .andExpect(status().isCreated());
 
         // Validate the RvRuleGroup in the database
@@ -108,16 +108,18 @@ public class RvRuleGroupResourceIT {
         RvRuleGroupDTO rvRuleGroupDTO = rvRuleGroupMapper.toDto(rvRuleGroup);
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restRvRuleGroupMockMvc.perform(post("/api/rv-rule-groups")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO)))
+        restRvRuleGroupMockMvc
+            .perform(
+                post("/api/rv-rule-groups")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO))
+            )
             .andExpect(status().isBadRequest());
 
         // Validate the RvRuleGroup in the database
         List<RvRuleGroup> rvRuleGroupList = rvRuleGroupRepository.findAll();
         assertThat(rvRuleGroupList).hasSize(databaseSizeBeforeCreate);
     }
-
 
     @Test
     @Transactional
@@ -129,10 +131,12 @@ public class RvRuleGroupResourceIT {
         // Create the RvRuleGroup, which fails.
         RvRuleGroupDTO rvRuleGroupDTO = rvRuleGroupMapper.toDto(rvRuleGroup);
 
-
-        restRvRuleGroupMockMvc.perform(post("/api/rv-rule-groups")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO)))
+        restRvRuleGroupMockMvc
+            .perform(
+                post("/api/rv-rule-groups")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO))
+            )
             .andExpect(status().isBadRequest());
 
         List<RvRuleGroup> rvRuleGroupList = rvRuleGroupRepository.findAll();
@@ -146,13 +150,14 @@ public class RvRuleGroupResourceIT {
         rvRuleGroupRepository.saveAndFlush(rvRuleGroup);
 
         // Get all the rvRuleGroupList
-        restRvRuleGroupMockMvc.perform(get("/api/rv-rule-groups?sort=id,desc"))
+        restRvRuleGroupMockMvc
+            .perform(get("/api/rv-rule-groups?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(rvRuleGroup.getId().intValue())))
             .andExpect(jsonPath("$.[*].ruleGroupName").value(hasItem(DEFAULT_RULE_GROUP_NAME)));
     }
-    
+
     @Test
     @Transactional
     public void getRvRuleGroup() throws Exception {
@@ -160,18 +165,19 @@ public class RvRuleGroupResourceIT {
         rvRuleGroupRepository.saveAndFlush(rvRuleGroup);
 
         // Get the rvRuleGroup
-        restRvRuleGroupMockMvc.perform(get("/api/rv-rule-groups/{id}", rvRuleGroup.getId()))
+        restRvRuleGroupMockMvc
+            .perform(get("/api/rv-rule-groups/{id}", rvRuleGroup.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(rvRuleGroup.getId().intValue()))
             .andExpect(jsonPath("$.ruleGroupName").value(DEFAULT_RULE_GROUP_NAME));
     }
+
     @Test
     @Transactional
     public void getNonExistingRvRuleGroup() throws Exception {
         // Get the rvRuleGroup
-        restRvRuleGroupMockMvc.perform(get("/api/rv-rule-groups/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+        restRvRuleGroupMockMvc.perform(get("/api/rv-rule-groups/{id}", Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
@@ -186,13 +192,15 @@ public class RvRuleGroupResourceIT {
         RvRuleGroup updatedRvRuleGroup = rvRuleGroupRepository.findById(rvRuleGroup.getId()).get();
         // Disconnect from session so that the updates on updatedRvRuleGroup are not directly saved in db
         em.detach(updatedRvRuleGroup);
-        updatedRvRuleGroup
-            .ruleGroupName(UPDATED_RULE_GROUP_NAME);
+        updatedRvRuleGroup.ruleGroupName(UPDATED_RULE_GROUP_NAME);
         RvRuleGroupDTO rvRuleGroupDTO = rvRuleGroupMapper.toDto(updatedRvRuleGroup);
 
-        restRvRuleGroupMockMvc.perform(put("/api/rv-rule-groups")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO)))
+        restRvRuleGroupMockMvc
+            .perform(
+                put("/api/rv-rule-groups")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO))
+            )
             .andExpect(status().isOk());
 
         // Validate the RvRuleGroup in the database
@@ -211,9 +219,12 @@ public class RvRuleGroupResourceIT {
         RvRuleGroupDTO rvRuleGroupDTO = rvRuleGroupMapper.toDto(rvRuleGroup);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restRvRuleGroupMockMvc.perform(put("/api/rv-rule-groups")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO)))
+        restRvRuleGroupMockMvc
+            .perform(
+                put("/api/rv-rule-groups")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvRuleGroupDTO))
+            )
             .andExpect(status().isBadRequest());
 
         // Validate the RvRuleGroup in the database
@@ -230,8 +241,8 @@ public class RvRuleGroupResourceIT {
         int databaseSizeBeforeDelete = rvRuleGroupRepository.findAll().size();
 
         // Delete the rvRuleGroup
-        restRvRuleGroupMockMvc.perform(delete("/api/rv-rule-groups/{id}", rvRuleGroup.getId())
-            .accept(MediaType.APPLICATION_JSON))
+        restRvRuleGroupMockMvc
+            .perform(delete("/api/rv-rule-groups/{id}", rvRuleGroup.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

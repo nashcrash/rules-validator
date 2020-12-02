@@ -1,11 +1,7 @@
 id;value
-1;sky blue
-2;SSL purple
-3;Plastic
-4;COM
-5;open-source e-business
-6;Incredible Concrete Bacon
-7;initiatives input Republic of Korea
-8;Home Loan Account Metal RAM
-9;Adaptive Borders XSS
-10;Orchestrator Money Market Account
+1;#{el.rule(test_name)}
+2;#{el.rule(test_description)}
+3;#{model.name}
+4;admin
+5;#{model.description}
+6;50

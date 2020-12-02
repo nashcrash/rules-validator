@@ -1,12 +1,19 @@
 package it.sitissimo.validation.web.rest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import it.sitissimo.validation.RulesValidatorApp;
 import it.sitissimo.validation.domain.RvOperatorParam;
+import it.sitissimo.validation.domain.enumeration.RvParamType;
 import it.sitissimo.validation.repository.RvOperatorParamRepository;
 import it.sitissimo.validation.service.RvOperatorParamService;
 import it.sitissimo.validation.service.dto.RvOperatorParamDTO;
 import it.sitissimo.validation.service.mapper.RvOperatorParamMapper;
-
+import java.util.List;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityManager;
-import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import it.sitissimo.validation.domain.enumeration.RvParamType;
 /**
  * Integration tests for the {@link RvOperatorParamResource} REST controller.
  */
@@ -32,7 +31,6 @@ import it.sitissimo.validation.domain.enumeration.RvParamType;
 @AutoConfigureMockMvc
 @WithMockUser
 public class RvOperatorParamResourceIT {
-
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
@@ -66,12 +64,10 @@ public class RvOperatorParamResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static RvOperatorParam createEntity(EntityManager em) {
-        RvOperatorParam rvOperatorParam = new RvOperatorParam()
-            .name(DEFAULT_NAME)
-            .description(DEFAULT_DESCRIPTION)
-            .type(DEFAULT_TYPE);
+        RvOperatorParam rvOperatorParam = new RvOperatorParam().name(DEFAULT_NAME).description(DEFAULT_DESCRIPTION).type(DEFAULT_TYPE);
         return rvOperatorParam;
     }
+
     /**
      * Create an updated entity for this test.
      *
@@ -79,10 +75,7 @@ public class RvOperatorParamResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static RvOperatorParam createUpdatedEntity(EntityManager em) {
-        RvOperatorParam rvOperatorParam = new RvOperatorParam()
-            .name(UPDATED_NAME)
-            .description(UPDATED_DESCRIPTION)
-            .type(UPDATED_TYPE);
+        RvOperatorParam rvOperatorParam = new RvOperatorParam().name(UPDATED_NAME).description(UPDATED_DESCRIPTION).type(UPDATED_TYPE);
         return rvOperatorParam;
     }
 
@@ -97,9 +90,12 @@ public class RvOperatorParamResourceIT {
         int databaseSizeBeforeCreate = rvOperatorParamRepository.findAll().size();
         // Create the RvOperatorParam
         RvOperatorParamDTO rvOperatorParamDTO = rvOperatorParamMapper.toDto(rvOperatorParam);
-        restRvOperatorParamMockMvc.perform(post("/api/rv-operator-params")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO)))
+        restRvOperatorParamMockMvc
+            .perform(
+                post("/api/rv-operator-params")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO))
+            )
             .andExpect(status().isCreated());
 
         // Validate the RvOperatorParam in the database
@@ -121,16 +117,18 @@ public class RvOperatorParamResourceIT {
         RvOperatorParamDTO rvOperatorParamDTO = rvOperatorParamMapper.toDto(rvOperatorParam);
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restRvOperatorParamMockMvc.perform(post("/api/rv-operator-params")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO)))
+        restRvOperatorParamMockMvc
+            .perform(
+                post("/api/rv-operator-params")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO))
+            )
             .andExpect(status().isBadRequest());
 
         // Validate the RvOperatorParam in the database
         List<RvOperatorParam> rvOperatorParamList = rvOperatorParamRepository.findAll();
         assertThat(rvOperatorParamList).hasSize(databaseSizeBeforeCreate);
     }
-
 
     @Test
     @Transactional
@@ -142,10 +140,12 @@ public class RvOperatorParamResourceIT {
         // Create the RvOperatorParam, which fails.
         RvOperatorParamDTO rvOperatorParamDTO = rvOperatorParamMapper.toDto(rvOperatorParam);
 
-
-        restRvOperatorParamMockMvc.perform(post("/api/rv-operator-params")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO)))
+        restRvOperatorParamMockMvc
+            .perform(
+                post("/api/rv-operator-params")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO))
+            )
             .andExpect(status().isBadRequest());
 
         List<RvOperatorParam> rvOperatorParamList = rvOperatorParamRepository.findAll();
@@ -162,10 +162,12 @@ public class RvOperatorParamResourceIT {
         // Create the RvOperatorParam, which fails.
         RvOperatorParamDTO rvOperatorParamDTO = rvOperatorParamMapper.toDto(rvOperatorParam);
 
-
-        restRvOperatorParamMockMvc.perform(post("/api/rv-operator-params")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO)))
+        restRvOperatorParamMockMvc
+            .perform(
+                post("/api/rv-operator-params")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO))
+            )
             .andExpect(status().isBadRequest());
 
         List<RvOperatorParam> rvOperatorParamList = rvOperatorParamRepository.findAll();
@@ -179,7 +181,8 @@ public class RvOperatorParamResourceIT {
         rvOperatorParamRepository.saveAndFlush(rvOperatorParam);
 
         // Get all the rvOperatorParamList
-        restRvOperatorParamMockMvc.perform(get("/api/rv-operator-params?sort=id,desc"))
+        restRvOperatorParamMockMvc
+            .perform(get("/api/rv-operator-params?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(rvOperatorParam.getId().intValue())))
@@ -187,7 +190,7 @@ public class RvOperatorParamResourceIT {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getRvOperatorParam() throws Exception {
@@ -195,7 +198,8 @@ public class RvOperatorParamResourceIT {
         rvOperatorParamRepository.saveAndFlush(rvOperatorParam);
 
         // Get the rvOperatorParam
-        restRvOperatorParamMockMvc.perform(get("/api/rv-operator-params/{id}", rvOperatorParam.getId()))
+        restRvOperatorParamMockMvc
+            .perform(get("/api/rv-operator-params/{id}", rvOperatorParam.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(rvOperatorParam.getId().intValue()))
@@ -203,12 +207,12 @@ public class RvOperatorParamResourceIT {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()));
     }
+
     @Test
     @Transactional
     public void getNonExistingRvOperatorParam() throws Exception {
         // Get the rvOperatorParam
-        restRvOperatorParamMockMvc.perform(get("/api/rv-operator-params/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+        restRvOperatorParamMockMvc.perform(get("/api/rv-operator-params/{id}", Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
@@ -223,15 +227,15 @@ public class RvOperatorParamResourceIT {
         RvOperatorParam updatedRvOperatorParam = rvOperatorParamRepository.findById(rvOperatorParam.getId()).get();
         // Disconnect from session so that the updates on updatedRvOperatorParam are not directly saved in db
         em.detach(updatedRvOperatorParam);
-        updatedRvOperatorParam
-            .name(UPDATED_NAME)
-            .description(UPDATED_DESCRIPTION)
-            .type(UPDATED_TYPE);
+        updatedRvOperatorParam.name(UPDATED_NAME).description(UPDATED_DESCRIPTION).type(UPDATED_TYPE);
         RvOperatorParamDTO rvOperatorParamDTO = rvOperatorParamMapper.toDto(updatedRvOperatorParam);
 
-        restRvOperatorParamMockMvc.perform(put("/api/rv-operator-params")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO)))
+        restRvOperatorParamMockMvc
+            .perform(
+                put("/api/rv-operator-params")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO))
+            )
             .andExpect(status().isOk());
 
         // Validate the RvOperatorParam in the database
@@ -252,9 +256,12 @@ public class RvOperatorParamResourceIT {
         RvOperatorParamDTO rvOperatorParamDTO = rvOperatorParamMapper.toDto(rvOperatorParam);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restRvOperatorParamMockMvc.perform(put("/api/rv-operator-params")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO)))
+        restRvOperatorParamMockMvc
+            .perform(
+                put("/api/rv-operator-params")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(rvOperatorParamDTO))
+            )
             .andExpect(status().isBadRequest());
 
         // Validate the RvOperatorParam in the database
@@ -271,8 +278,8 @@ public class RvOperatorParamResourceIT {
         int databaseSizeBeforeDelete = rvOperatorParamRepository.findAll().size();
 
         // Delete the rvOperatorParam
-        restRvOperatorParamMockMvc.perform(delete("/api/rv-operator-params/{id}", rvOperatorParam.getId())
-            .accept(MediaType.APPLICATION_JSON))
+        restRvOperatorParamMockMvc
+            .perform(delete("/api/rv-operator-params/{id}", rvOperatorParam.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

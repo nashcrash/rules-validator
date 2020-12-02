@@ -1,17 +1,14 @@
 package it.sitissimo.validation.service.mapper;
 
-
 import it.sitissimo.validation.domain.*;
 import it.sitissimo.validation.service.dto.RvOperatorParamDTO;
-
 import org.mapstruct.*;
 
 /**
  * Mapper for the entity {@link RvOperatorParam} and its DTO {@link RvOperatorParamDTO}.
  */
-@Mapper(componentModel = "spring", uses = {RvOperatorMapper.class})
+@Mapper(componentModel = "spring", uses = { RvOperatorMapper.class })
 public interface RvOperatorParamMapper extends EntityMapper<RvOperatorParamDTO, RvOperatorParam> {
-
     @Mapping(source = "operator.id", target = "operatorId")
     RvOperatorParamDTO toDto(RvOperatorParam rvOperatorParam);
 

@@ -1,12 +1,16 @@
 package it.sitissimo.validation.web.rest;
 
-import it.sitissimo.validation.service.RvOperatorParamService;
-import it.sitissimo.validation.web.rest.errors.BadRequestAlertException;
-import it.sitissimo.validation.service.dto.RvOperatorParamDTO;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import it.sitissimo.validation.service.RvOperatorParamService;
+import it.sitissimo.validation.service.dto.RvOperatorParamDTO;
+import it.sitissimo.validation.web.rest.errors.BadRequestAlertException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,15 +18,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * REST controller for managing {@link it.sitissimo.validation.domain.RvOperatorParam}.
@@ -30,7 +28,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class RvOperatorParamResource {
-
     private final Logger log = LoggerFactory.getLogger(RvOperatorParamResource.class);
 
     private static final String ENTITY_NAME = "rvOperatorParam";
@@ -52,13 +49,15 @@ public class RvOperatorParamResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/rv-operator-params")
-    public ResponseEntity<RvOperatorParamDTO> createRvOperatorParam(@Valid @RequestBody RvOperatorParamDTO rvOperatorParamDTO) throws URISyntaxException {
+    public ResponseEntity<RvOperatorParamDTO> createRvOperatorParam(@Valid @RequestBody RvOperatorParamDTO rvOperatorParamDTO)
+        throws URISyntaxException {
         log.debug("REST request to save RvOperatorParam : {}", rvOperatorParamDTO);
         if (rvOperatorParamDTO.getId() != null) {
             throw new BadRequestAlertException("A new rvOperatorParam cannot already have an ID", ENTITY_NAME, "idexists");
         }
         RvOperatorParamDTO result = rvOperatorParamService.save(rvOperatorParamDTO);
-        return ResponseEntity.created(new URI("/api/rv-operator-params/" + result.getId()))
+        return ResponseEntity
+            .created(new URI("/api/rv-operator-params/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
@@ -73,13 +72,15 @@ public class RvOperatorParamResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/rv-operator-params")
-    public ResponseEntity<RvOperatorParamDTO> updateRvOperatorParam(@Valid @RequestBody RvOperatorParamDTO rvOperatorParamDTO) throws URISyntaxException {
+    public ResponseEntity<RvOperatorParamDTO> updateRvOperatorParam(@Valid @RequestBody RvOperatorParamDTO rvOperatorParamDTO)
+        throws URISyntaxException {
         log.debug("REST request to update RvOperatorParam : {}", rvOperatorParamDTO);
         if (rvOperatorParamDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         RvOperatorParamDTO result = rvOperatorParamService.save(rvOperatorParamDTO);
-        return ResponseEntity.ok()
+        return ResponseEntity
+            .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, rvOperatorParamDTO.getId().toString()))
             .body(result);
     }
@@ -121,6 +122,9 @@ public class RvOperatorParamResource {
     public ResponseEntity<Void> deleteRvOperatorParam(@PathVariable Long id) {
         log.debug("REST request to delete RvOperatorParam : {}", id);
         rvOperatorParamService.delete(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .build();
     }
 }

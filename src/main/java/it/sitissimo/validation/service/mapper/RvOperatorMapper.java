@@ -1,9 +1,7 @@
 package it.sitissimo.validation.service.mapper;
 
-
 import it.sitissimo.validation.domain.*;
 import it.sitissimo.validation.service.dto.RvOperatorDTO;
-
 import org.mapstruct.*;
 
 /**
@@ -11,8 +9,6 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface RvOperatorMapper extends EntityMapper<RvOperatorDTO, RvOperator> {
-
-
     @Mapping(target = "params", ignore = true)
     @Mapping(target = "removeParams", ignore = true)
     RvOperator toEntity(RvOperatorDTO rvOperatorDTO);
@@ -25,4 +21,7 @@ public interface RvOperatorMapper extends EntityMapper<RvOperatorDTO, RvOperator
         rvOperator.setId(id);
         return rvOperator;
     }
+
+    @Mappings({ @Mapping(source = "id", target = "id", ignore = true) })
+    RvOperatorDTO clone(RvOperatorDTO dto);
 }
