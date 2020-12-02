@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="rulesValidatorApp.rvOperator.home.title">Rv Operators</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rv-operator" [routerLink]="['/rv-operator/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="rulesValidatorApp.rvOperator.home.createLabel">
+            Create a new Rv Operator
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="rvOperators?.length === 0">
+        <span jhiTranslate="rulesValidatorApp.rvOperator.home.notFound">No rvOperators found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="rvOperators && rvOperators.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="operatorCode"><span jhiTranslate="rulesValidatorApp.rvOperator.operatorCode">Operator Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="rulesValidatorApp.rvOperator.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="beanName"><span jhiTranslate="rulesValidatorApp.rvOperator.beanName">Bean Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberOfParams"><span jhiTranslate="rulesValidatorApp.rvOperator.numberOfParams">Number Of Params</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let rvOperator of rvOperators ;trackBy: trackId">
+                    <td><a [routerLink]="['/rv-operator', rvOperator.id, 'view']">{{ rvOperator.id }}</a></td>
+                    <td>{{ rvOperator.operatorCode }}</td>
+                    <td>{{ rvOperator.description }}</td>
+                    <td>{{ rvOperator.beanName }}</td>
+                    <td>{{ rvOperator.numberOfParams }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/rv-operator', rvOperator.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/rv-operator', rvOperator.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(rvOperator)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

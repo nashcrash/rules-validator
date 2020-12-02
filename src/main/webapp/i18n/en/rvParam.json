@@ -1,0 +1,24 @@
+{
+  "rulesValidatorApp": {
+    "rvParam": {
+      "home": {
+        "title": "Rv Params",
+        "createLabel": "Create a new Rv Param",
+        "createOrEditLabel": "Create or edit a Rv Param",
+        "notFound": "No Rv Params found"
+      },
+      "created": "A new Rv Param is created with identifier {{ param }}",
+      "updated": "A Rv Param is updated with identifier {{ param }}",
+      "deleted": "A Rv Param is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rv Param {{ id }}?"
+      },
+      "detail": {
+        "title": "Rv Param"
+      },
+      "value": "Value",
+      "rvConverter": "Rv Converter",
+      "rvRule": "Rv Rule"
+    }
+  }
+}

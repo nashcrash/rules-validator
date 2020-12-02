@@ -1,0 +1,25 @@
+{
+  "rulesValidatorApp": {
+    "rvConverter": {
+      "home": {
+        "title": "Rv Converters",
+        "createLabel": "Create a new Rv Converter",
+        "createOrEditLabel": "Create or edit a Rv Converter",
+        "notFound": "No Rv Converters found"
+      },
+      "created": "A new Rv Converter is created with identifier {{ param }}",
+      "updated": "A Rv Converter is updated with identifier {{ param }}",
+      "deleted": "A Rv Converter is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rv Converter {{ id }}?"
+      },
+      "detail": {
+        "title": "Rv Converter"
+      },
+      "converterCode": "Converter Code",
+      "description": "Description",
+      "beanName": "Bean Name",
+      "rvParam": "Rv Param"
+    }
+  }
+}

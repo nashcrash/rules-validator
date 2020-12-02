@@ -1,0 +1,26 @@
+{
+  "rulesValidatorApp": {
+    "rvOperator": {
+      "home": {
+        "title": "Rv Operators",
+        "createLabel": "Create a new Rv Operator",
+        "createOrEditLabel": "Create or edit a Rv Operator",
+        "notFound": "No Rv Operators found"
+      },
+      "created": "A new Rv Operator is created with identifier {{ param }}",
+      "updated": "A Rv Operator is updated with identifier {{ param }}",
+      "deleted": "A Rv Operator is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rv Operator {{ id }}?"
+      },
+      "detail": {
+        "title": "Rv Operator"
+      },
+      "operatorCode": "Operator Code",
+      "description": "Description",
+      "beanName": "Bean Name",
+      "numberOfParams": "Number Of Params",
+      "params": "Params"
+    }
+  }
+}

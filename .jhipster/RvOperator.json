@@ -1,0 +1,42 @@
+{
+  "name": "RvOperator",
+  "fields": [
+    {
+      "fieldName": "operatorCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "beanName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numberOfParams",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "rvOperatorParam",
+      "otherEntityRelationshipName": "operator",
+      "relationshipName": "params"
+    }
+  ],
+  "changelogDate": "20201202092651",
+  "entityTableName": "rv_operator",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

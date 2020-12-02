@@ -1,0 +1,22 @@
+{
+  "rulesValidatorApp": {
+    "rvRuleGroup": {
+      "home": {
+        "title": "RvRuleGroups",
+        "createLabel": "Genera un nuovo Rv Rule Group",
+        "createOrEditLabel": "Genera o modifica un Rv Rule Group",
+        "notFound": "No Rv Rule Groups found"
+      },
+      "created": "&Egrave; stato generato un nuovo Rv Rule Group con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Rv Rule Group identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Rv Rule Group con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Rv Rule Group {{ id }}?"
+      },
+      "detail": {
+        "title": "Rv Rule Group"
+      },
+      "ruleGroupName": "Rule Group Name"
+    }
+  }
+}

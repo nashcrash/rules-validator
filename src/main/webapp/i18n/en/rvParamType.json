@@ -1,0 +1,13 @@
+{
+  "rulesValidatorApp": {
+    "RvParamType": {
+      "null": "",
+      "STRING": "STRING",
+      "INTEGER": "INTEGER",
+      "DECIMAL": "DECIMAL",
+      "DATE": "DATE",
+      "RULE": "RULE",
+      "FIELD": "FIELD"
+    }
+  }
+}

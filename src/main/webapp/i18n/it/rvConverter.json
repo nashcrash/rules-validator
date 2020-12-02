@@ -1,0 +1,25 @@
+{
+  "rulesValidatorApp": {
+    "rvConverter": {
+      "home": {
+        "title": "RvConverters",
+        "createLabel": "Genera un nuovo Rv Converter",
+        "createOrEditLabel": "Genera o modifica un Rv Converter",
+        "notFound": "No Rv Converters found"
+      },
+      "created": "&Egrave; stato generato un nuovo Rv Converter con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Rv Converter identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Rv Converter con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Rv Converter {{ id }}?"
+      },
+      "detail": {
+        "title": "Rv Converter"
+      },
+      "converterCode": "Converter Code",
+      "description": "Description",
+      "beanName": "Bean Name",
+      "rvParam": "Rv Param"
+    }
+  }
+}
