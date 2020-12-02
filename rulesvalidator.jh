@@ -1,0 +1,78 @@
+entity RvRuleGroup {
+	ruleGroupName String required unique
+}
+
+entity RvRule {
+	ruleCode String required unique,
+    description String, //Use espression language #{}. key-words: rule, model
+    level RvRuleLevel required,
+    mode RvRuleMode required
+}
+
+relationship ManyToOne {
+	RvRule{group} to RvRuleGroup
+}
+
+enum RvRuleLevel {
+    CRITICAL, WARNING
+}
+
+entity RvOperator {
+	operatorCode String required unique,
+    description String,
+    beanName String required,
+    numberOfParams Integer //0, 1, 2, ... (null more), -1 (1 or more), -2 (2 or more)
+}
+
+entity RvOperatorParam {
+	name String required,
+	description String,
+    type RvParamType required
+}
+
+relationship OneToMany {
+	RvOperator{params} to RvOperatorParam{operator}
+}
+
+enum RvParamType {
+    STRING, INTEGER, DECIMAL, DATE, RULE, FIELD
+}
+
+entity RvParam {
+	value String
+}
+
+entity RvConverter {
+	converterCode String required unique,
+    description String,
+    beanName String required,
+}
+
+relationship ManyToOne {
+	RvRule{operator} to RvOperator
+}
+
+relationship ManyToMany {
+	RvRule to RvParam
+}
+
+relationship ManyToMany {
+	RvParam to RvConverter
+}
+
+enum RvRuleMode {
+    FIRST_ERROR, ALL_VALIDATION
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
