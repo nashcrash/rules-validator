@@ -9,7 +9,7 @@ import { IRvRule, RvRule } from 'app/shared/model/rv-rule.model';
 import { RvRuleService } from './rv-rule.service';
 import { IRvRuleGroup } from 'app/shared/model/rv-rule-group.model';
 import { RvRuleGroupService } from 'app/entities/rv-rule-group/rv-rule-group.service';
-import { IRvOperator } from 'app/shared/model/rv-operator.model';
+import { IRvOperator, RvOperator } from 'app/shared/model/rv-operator.model';
 import { RvOperatorService } from 'app/entities/rv-operator/rv-operator.service';
 import { IRvParam } from 'app/shared/model/rv-param.model';
 import { RvParamService } from 'app/entities/rv-param/rv-param.service';
