@@ -20,8 +20,15 @@
       "fieldType": "Integer"
     }
   ],
-  "relationships": [],
-  "changelogDate": "20201112093040",
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "rvOperatorParam",
+      "otherEntityRelationshipName": "operator",
+      "relationshipName": "params"
+    }
+  ],
+  "changelogDate": "20201202092651",
   "entityTableName": "rv_operator",
   "dto": "mapstruct",
   "pagination": "infinite-scroll",

@@ -1,12 +1,12 @@
 package it.sitissimo.validation.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
-import java.io.Serializable;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A RvOperator.
@@ -15,7 +15,6 @@ import java.io.Serializable;
 @Table(name = "rv_operator")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class RvOperator implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -35,6 +34,10 @@ public class RvOperator implements Serializable {
 
     @Column(name = "number_of_params")
     private Integer numberOfParams;
+
+    @OneToMany(mappedBy = "operator")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<RvOperatorParam> params = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -96,6 +99,32 @@ public class RvOperator implements Serializable {
     public void setNumberOfParams(Integer numberOfParams) {
         this.numberOfParams = numberOfParams;
     }
+
+    public Set<RvOperatorParam> getParams() {
+        return params;
+    }
+
+    public RvOperator params(Set<RvOperatorParam> rvOperatorParams) {
+        this.params = rvOperatorParams;
+        return this;
+    }
+
+    public RvOperator addParams(RvOperatorParam rvOperatorParam) {
+        this.params.add(rvOperatorParam);
+        rvOperatorParam.setOperator(this);
+        return this;
+    }
+
+    public RvOperator removeParams(RvOperatorParam rvOperatorParam) {
+        this.params.remove(rvOperatorParam);
+        rvOperatorParam.setOperator(null);
+        return this;
+    }
+
+    public void setParams(Set<RvOperatorParam> rvOperatorParams) {
+        this.params = rvOperatorParams;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

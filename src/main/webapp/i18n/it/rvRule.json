@@ -20,6 +20,7 @@
       "description": "Description",
       "level": "Level",
       "mode": "Mode",
+      "group": "Group",
       "operator": "Operator",
       "rvParam": "Rv Param"
     }

@@ -24,7 +24,7 @@
       "ownerSide": false
     }
   ],
-  "changelogDate": "20201112093140",
+  "changelogDate": "20201202092851",
   "entityTableName": "rv_param",
   "dto": "mapstruct",
   "pagination": "infinite-scroll",

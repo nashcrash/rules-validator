@@ -1,0 +1,25 @@
+{
+  "rulesValidatorApp": {
+    "rvOperatorParam": {
+      "home": {
+        "title": "Rv Operator Params",
+        "createLabel": "Create a new Rv Operator Param",
+        "createOrEditLabel": "Create or edit a Rv Operator Param",
+        "notFound": "No Rv Operator Params found"
+      },
+      "created": "A new Rv Operator Param is created with identifier {{ param }}",
+      "updated": "A Rv Operator Param is updated with identifier {{ param }}",
+      "deleted": "A Rv Operator Param is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rv Operator Param {{ id }}?"
+      },
+      "detail": {
+        "title": "Rv Operator Param"
+      },
+      "name": "Name",
+      "description": "Description",
+      "type": "Type",
+      "operator": "Operator"
+    }
+  }
+}

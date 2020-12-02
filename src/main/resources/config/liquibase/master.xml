@@ -18,6 +18,8 @@
     <include file="config/liquibase/changelog/20201112093040_added_entity_RvOperator.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201112093140_added_entity_RvParam.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201112093240_added_entity_RvConverter.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092851_added_entity_RvParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201202092951_added_entity_RvConverter.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20201112092940_added_entity_constraints_RvRule.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201112093140_added_entity_constraints_RvParam.xml" relativeToChangelogFile="false"/>

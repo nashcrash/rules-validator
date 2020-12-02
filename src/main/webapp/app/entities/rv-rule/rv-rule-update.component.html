@@ -58,6 +58,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rulesValidatorApp.rvRule.group" for="field_group">Group</label>
+                    <select class="form-control" id="field_group" name="group" formControlName="groupId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rvRuleGroupOption.id" *ngFor="let rvRuleGroupOption of rvrulegroups; trackBy: trackById">{{ rvRuleGroupOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rulesValidatorApp.rvRule.operator" for="field_operator">Operator</label>
                     <select class="form-control" id="field_operator" name="operator" formControlName="operatorId">
                         <option [ngValue]="null"></option>

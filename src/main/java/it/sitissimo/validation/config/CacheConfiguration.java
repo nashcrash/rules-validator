@@ -47,9 +47,12 @@ public class CacheConfiguration {
             createCache(cm, it.sitissimo.validation.domain.User.class.getName());
             createCache(cm, it.sitissimo.validation.domain.Authority.class.getName());
             createCache(cm, it.sitissimo.validation.domain.User.class.getName() + ".authorities");
+            createCache(cm, it.sitissimo.validation.domain.RvRuleGroup.class.getName());
             createCache(cm, it.sitissimo.validation.domain.RvRule.class.getName());
             createCache(cm, it.sitissimo.validation.domain.RvRule.class.getName() + ".rvParams");
             createCache(cm, it.sitissimo.validation.domain.RvOperator.class.getName());
+            createCache(cm, it.sitissimo.validation.domain.RvOperator.class.getName() + ".params");
+            createCache(cm, it.sitissimo.validation.domain.RvOperatorParam.class.getName());
             createCache(cm, it.sitissimo.validation.domain.RvParam.class.getName());
             createCache(cm, it.sitissimo.validation.domain.RvParam.class.getName() + ".rvConverters");
             createCache(cm, it.sitissimo.validation.domain.RvParam.class.getName() + ".rvRules");

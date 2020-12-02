@@ -19,7 +19,8 @@
       "operatorCode": "Operator Code",
       "description": "Description",
       "beanName": "Bean Name",
-      "numberOfParams": "Number Of Params"
+      "numberOfParams": "Number Of Params",
+      "params": "Params"
     }
   }
 }

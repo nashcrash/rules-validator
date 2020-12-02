@@ -1,19 +1,15 @@
 package it.sitissimo.validation.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import it.sitissimo.validation.domain.enumeration.RvRuleLevel;
+import it.sitissimo.validation.domain.enumeration.RvRuleMode;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-import it.sitissimo.validation.domain.enumeration.RvRuleLevel;
-
-import it.sitissimo.validation.domain.enumeration.RvRuleMode;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A RvRule.
@@ -22,7 +18,6 @@ import it.sitissimo.validation.domain.enumeration.RvRuleMode;
 @Table(name = "rv_rule")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class RvRule implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -48,13 +43,19 @@ public class RvRule implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "rvRules", allowSetters = true)
+    private RvRuleGroup group;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "rvRules", allowSetters = true)
     private RvOperator operator;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "rv_rule_rv_param",
-               joinColumns = @JoinColumn(name = "rv_rule_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "rv_param_id", referencedColumnName = "id"))
+    @JoinTable(
+        name = "rv_rule_rv_param",
+        joinColumns = @JoinColumn(name = "rv_rule_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "rv_param_id", referencedColumnName = "id")
+    )
     private Set<RvParam> rvParams = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -118,6 +119,19 @@ public class RvRule implements Serializable {
         this.mode = mode;
     }
 
+    public RvRuleGroup getGroup() {
+        return group;
+    }
+
+    public RvRule group(RvRuleGroup rvRuleGroup) {
+        this.group = rvRuleGroup;
+        return this;
+    }
+
+    public void setGroup(RvRuleGroup rvRuleGroup) {
+        this.group = rvRuleGroup;
+    }
+
     public RvOperator getOperator() {
         return operator;
     }
@@ -155,6 +169,7 @@ public class RvRule implements Serializable {
     public void setRvParams(Set<RvParam> rvParams) {
         this.rvParams = rvParams;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

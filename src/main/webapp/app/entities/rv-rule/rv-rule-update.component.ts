@@ -7,12 +7,14 @@ import { Observable } from 'rxjs';
 
 import { IRvRule, RvRule } from 'app/shared/model/rv-rule.model';
 import { RvRuleService } from './rv-rule.service';
-import { IRvOperator, RvOperator } from 'app/shared/model/rv-operator.model';
+import { IRvRuleGroup } from 'app/shared/model/rv-rule-group.model';
+import { RvRuleGroupService } from 'app/entities/rv-rule-group/rv-rule-group.service';
+import { IRvOperator } from 'app/shared/model/rv-operator.model';
 import { RvOperatorService } from 'app/entities/rv-operator/rv-operator.service';
 import { IRvParam } from 'app/shared/model/rv-param.model';
 import { RvParamService } from 'app/entities/rv-param/rv-param.service';
 
-type SelectableEntity = IRvOperator | IRvParam;
+type SelectableEntity = IRvRuleGroup | IRvOperator | IRvParam;
 
 @Component({
   selector: 'jhi-rv-rule-update',
@@ -20,6 +22,7 @@ type SelectableEntity = IRvOperator | IRvParam;
 })
 export class RvRuleUpdateComponent implements OnInit {
   isSaving = false;
+  rvrulegroups: IRvRuleGroup[] = [];
   rvoperators: IRvOperator[] = [];
   rvparams: IRvParam[] = [];
 
@@ -29,12 +32,14 @@ export class RvRuleUpdateComponent implements OnInit {
     description: [],
     level: [null, [Validators.required]],
     mode: [null, [Validators.required]],
+    groupId: [],
     operatorId: [],
     rvParams: [],
   });
 
   constructor(
     protected rvRuleService: RvRuleService,
+    protected rvRuleGroupService: RvRuleGroupService,
     protected rvOperatorService: RvOperatorService,
     protected rvParamService: RvParamService,
     protected activatedRoute: ActivatedRoute,
@@ -44,6 +49,8 @@ export class RvRuleUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ rvRule }) => {
       this.updateForm(rvRule);
+
+      this.rvRuleGroupService.query().subscribe((res: HttpResponse<IRvRuleGroup[]>) => (this.rvrulegroups = res.body || []));
 
       this.rvOperatorService.query().subscribe((res: HttpResponse<IRvOperator[]>) => (this.rvoperators = res.body || []));
 
@@ -58,7 +65,8 @@ export class RvRuleUpdateComponent implements OnInit {
       description: rvRule.description,
       level: rvRule.level,
       mode: rvRule.mode,
-      operatorId: (rvRule.operator) ? rvRule.operator.id : undefined,
+      groupId: rvRule.groupId,
+      operatorId: rvRule.operator ? rvRule.operator.id : undefined,
       rvParams: rvRule.rvParams,
     });
   }
@@ -85,6 +93,7 @@ export class RvRuleUpdateComponent implements OnInit {
       description: this.editForm.get(['description'])!.value,
       level: this.editForm.get(['level'])!.value,
       mode: this.editForm.get(['mode'])!.value,
+      groupId: this.editForm.get(['groupId'])!.value,
       operator: new RvOperator(this.editForm.get(['operatorId'])!.value),
       rvParams: this.editForm.get(['rvParams'])!.value,
     };

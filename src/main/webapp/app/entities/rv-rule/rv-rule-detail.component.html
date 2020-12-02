@@ -24,6 +24,12 @@
                 <dd>
                     <span jhiTranslate="{{ 'rulesValidatorApp.RvRuleMode.' + rvRule.mode }}">{{ rvRule.mode }}</span>
                 </dd>
+                <dt><span jhiTranslate="rulesValidatorApp.rvRule.group">Group</span></dt>
+                <dd>
+                    <div *ngIf="rvRule.groupId">
+                        <a [routerLink]="['/rv-rule-group', rvRule.groupId, 'view']">{{ rvRule.groupId }}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="rulesValidatorApp.rvRule.operator">Operator</span></dt>
                 <dd>
                     <div *ngIf="rvRule.operator">

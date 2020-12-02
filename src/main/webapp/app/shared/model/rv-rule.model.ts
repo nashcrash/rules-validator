@@ -9,6 +9,7 @@ export interface IRvRule {
   description?: string;
   level?: RvRuleLevel;
   mode?: RvRuleMode;
+  groupId?: number;
   operator?: IRvOperator;
   rvParams?: IRvParam[];
 }
@@ -20,6 +21,7 @@ export class RvRule implements IRvRule {
     public description?: string,
     public level?: RvRuleLevel,
     public mode?: RvRuleMode,
+    public groupId?: number,
     public operator?: IRvOperator,
     public rvParams?: IRvParam[]
   ) {}
