@@ -19,6 +19,31 @@
                     </span>
                 </a>
             </li>
+            <li *jhiHasAnyAuthority="'ROLE_USER'" ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="rules-validation-menu">
+                    <span>
+                        <fa-icon icon="hand-spock"></fa-icon>
+                        <span jhiTranslate="global.menu.rules-validation.main">
+                            Rules Validation
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="rules-validation-menu">
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                        <a class="dropdown-item" routerLink="rule-editor" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="collapseNavbar()">
+                            <fa-icon icon="cog" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.rules-validation.rule-editor">Rule Editor</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="validation-tester" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="collapseNavbar()">
+                            <fa-icon icon="file-check" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.rules-validation.validation-tester">Validation Tester</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic"
                 routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
