@@ -8,7 +8,7 @@
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly/>
                 </div>
 
                 <div class="form-group">
@@ -18,7 +18,7 @@
                     <div *ngIf="editForm.get('ruleCode')!.invalid && (editForm.get('ruleCode')!.dirty || editForm.get('ruleCode')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('ruleCode')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                            This field is required.
                         </small>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div *ngIf="editForm.get('level')!.invalid && (editForm.get('level')!.dirty || editForm.get('level')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('level')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                            This field is required.
                         </small>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div *ngIf="editForm.get('mode')!.invalid && (editForm.get('mode')!.dirty || editForm.get('mode')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('mode')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                            This field is required.
                         </small>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                     <label class="form-control-label" jhiTranslate="rulesValidatorApp.rvRule.group" for="field_group">Group</label>
                     <select class="form-control" id="field_group" name="group" formControlName="groupId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="rvRuleGroupOption.id" *ngFor="let rvRuleGroupOption of rvrulegroups; trackBy: trackById">{{ rvRuleGroupOption.id }}</option>
+                        <option [ngValue]="rvRuleGroupOption.id" *ngFor="let rvRuleGroupOption of rvrulegroups; trackBy: trackById">{{ rvRuleGroupOption.ruleGroupName }}</option>
                     </select>
                 </div>
 
@@ -69,14 +69,14 @@
                     <label class="form-control-label" jhiTranslate="rulesValidatorApp.rvRule.operator" for="field_operator">Operator</label>
                     <select class="form-control" id="field_operator" name="operator" formControlName="operatorId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="rvOperatorOption.id" *ngFor="let rvOperatorOption of rvoperators; trackBy: trackById">{{ rvOperatorOption.id }}</option>
+                        <option [ngValue]="rvOperatorOption.id" *ngFor="let rvOperatorOption of rvoperators; trackBy: trackById">{{ rvOperatorOption.description }}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label jhiTranslate="rulesValidatorApp.rvRule.rvParam" for="field_rvParams">Rv Param</label>
                     <select class="form-control" id="field_rvParams" multiple name="rvParams" formControlName="rvParams">
-                        <option [ngValue]="getSelected(editForm.get('rvParams')!.value, rvParamOption)" *ngFor="let rvParamOption of rvparams; trackBy: trackById">{{ rvParamOption.id }}</option>
+                        <option [ngValue]="getSelected(editForm.get('rvParams')!.value, rvParamOption)" *ngFor="let rvParamOption of rvparams; trackBy: trackById">{{ rvParamOption.value }}</option>
                     </select>
                 </div>
             </div>

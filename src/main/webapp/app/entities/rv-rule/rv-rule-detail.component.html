@@ -26,20 +26,20 @@
                 </dd>
                 <dt><span jhiTranslate="rulesValidatorApp.rvRule.group">Group</span></dt>
                 <dd>
-                    <div *ngIf="rvRule.groupId">
-                        <a [routerLink]="['/rv-rule-group', rvRule.groupId, 'view']">{{ rvRule.groupId }}</a>
+                    <div *ngIf="rvRule.group">
+                        <a [routerLink]="['/rv-rule-group', rvRule.group.id, 'view']">{{ rvRule.group.ruleGroupName}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="rulesValidatorApp.rvRule.operator">Operator</span></dt>
                 <dd>
                     <div *ngIf="rvRule.operator">
-                        <a [routerLink]="['/rv-operator', rvRule.operator.id, 'view']">{{ rvRule.operator.id }}</a>
+                        <a [routerLink]="['/rv-operator', rvRule.operator.id, 'view']">{{ rvRule.operator.description}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="rulesValidatorApp.rvRule.rvParam">Rv Param</span></dt>
                 <dd>
                     <span *ngFor="let rvParam of rvRule.rvParams; let last = last">
-                        <a [routerLink]="['/rv-param', rvParam?.id, 'view']">{{ rvParam.id }}</a>{{ last ? '' : ', ' }}
+                        <a [routerLink]="['/rv-param', rvParam?.id, 'view']">{{ rvParam.value }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
             </dl>

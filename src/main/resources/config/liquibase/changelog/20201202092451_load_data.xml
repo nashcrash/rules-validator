@@ -17,7 +17,7 @@
         </loadData>
     </changeSet>
 
-    <changeSet id="20201202092451-2-data" author="jhipster">
+    <changeSet id="20201202092451-2-data" author="jhipster" context="faker">
         <loadData
             file="config/liquibase/fake-data/rv_operator.csv"
             separator=";"

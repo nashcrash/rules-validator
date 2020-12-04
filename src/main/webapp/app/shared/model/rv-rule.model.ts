@@ -2,6 +2,7 @@ import { IRvParam } from 'app/shared/model/rv-param.model';
 import { RvRuleLevel } from 'app/shared/model/enumerations/rv-rule-level.model';
 import { RvRuleMode } from 'app/shared/model/enumerations/rv-rule-mode.model';
 import { IRvOperator } from 'app/shared/model/rv-operator.model';
+import { IRvRuleGroup } from 'app/shared/model/rv-rule-group.model';
 
 export interface IRvRule {
   id?: number;
@@ -9,7 +10,7 @@ export interface IRvRule {
   description?: string;
   level?: RvRuleLevel;
   mode?: RvRuleMode;
-  groupId?: number;
+  group?: IRvRuleGroup;
   operator?: IRvOperator;
   rvParams?: IRvParam[];
 }
@@ -21,7 +22,7 @@ export class RvRule implements IRvRule {
     public description?: string,
     public level?: RvRuleLevel,
     public mode?: RvRuleMode,
-    public groupId?: number,
+    public group?: IRvRuleGroup,
     public operator?: IRvOperator,
     public rvParams?: IRvParam[]
   ) {}

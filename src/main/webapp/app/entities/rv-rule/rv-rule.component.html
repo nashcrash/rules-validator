@@ -58,13 +58,13 @@
                 <td jhiTranslate="{{ 'rulesValidatorApp.RvRuleLevel.' + rvRule.level }}">{{ rvRule.level }}</td>
                 <td jhiTranslate="{{ 'rulesValidatorApp.RvRuleMode.' + rvRule.mode }}">{{ rvRule.mode }}</td>
                 <td>
-                    <div *ngIf="rvRule.groupId">
-                        <a [routerLink]="['/rv-rule-group', rvRule.groupId , 'view']">{{ rvRule.groupId }}</a>
+                    <div *ngIf="rvRule.group">
+                        <a [routerLink]="['/rv-rule-group', rvRule.group.id , 'view']">{{ rvRule.group.ruleGroupName }}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="rvRule.operator">
-                        <a [routerLink]="['/rv-operator', rvRule.operator.id , 'view']">{{ rvRule.operator.id }}</a>
+                        <a [routerLink]="['/rv-operator', rvRule.operator.id , 'view']">{{ rvRule.operator.description }}</a>
                     </div>
                 </td>
                 <td class="text-right">

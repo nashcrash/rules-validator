@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 
 import { IRvRule, RvRule } from 'app/shared/model/rv-rule.model';
 import { RvRuleService } from './rv-rule.service';
-import { IRvRuleGroup } from 'app/shared/model/rv-rule-group.model';
+import { IRvRuleGroup, RvRuleGroup } from 'app/shared/model/rv-rule-group.model';
 import { RvRuleGroupService } from 'app/entities/rv-rule-group/rv-rule-group.service';
 import { IRvOperator, RvOperator } from 'app/shared/model/rv-operator.model';
 import { RvOperatorService } from 'app/entities/rv-operator/rv-operator.service';
@@ -65,7 +65,7 @@ export class RvRuleUpdateComponent implements OnInit {
       description: rvRule.description,
       level: rvRule.level,
       mode: rvRule.mode,
-      groupId: rvRule.groupId,
+      groupId: rvRule.group ? rvRule.group.id : undefined,
       operatorId: rvRule.operator ? rvRule.operator.id : undefined,
       rvParams: rvRule.rvParams,
     });
@@ -93,7 +93,7 @@ export class RvRuleUpdateComponent implements OnInit {
       description: this.editForm.get(['description'])!.value,
       level: this.editForm.get(['level'])!.value,
       mode: this.editForm.get(['mode'])!.value,
-      groupId: this.editForm.get(['groupId'])!.value,
+      group: new RvRuleGroup(this.editForm.get(['groupId'])!.value),
       operator: new RvOperator(this.editForm.get(['operatorId'])!.value),
       rvParams: this.editForm.get(['rvParams'])!.value,
     };

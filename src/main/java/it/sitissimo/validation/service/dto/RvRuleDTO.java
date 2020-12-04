@@ -26,7 +26,7 @@ public class RvRuleDTO implements Serializable {
     @NotNull
     private RvRuleMode mode;
 
-    private Long groupId;
+    private RvRuleGroupDTO group;
     private RvOperatorDTO operator;
     private List<RvParamDTO> rvParams = new ArrayList<>();
 }
