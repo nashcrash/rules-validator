@@ -1,11 +1,83 @@
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <h6 class="text-right">{{message}}</h6>
-    <h1 class="text-capitalize text-center" jhiTranslate="validation-tester.title">Title</h1>
-    <h5 class="text-center" jhiTranslate="validation-tester.subtitle">Subtitle</h5>
-    <hr/>
-    <p class="text-justify" jhiTranslate="validation-tester.content">Content</p>
-  </div>
-  <div class="col-md-1"></div>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="validate()" [formGroup]="editForm">
+            <h2 id="jhi-validation-tester-heading" jhiTranslate="validation-tester.title">Validation Tester</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="validation-tester.type" for="field_type">Type</label>
+                <select class="form-control" name="type" formControlName="type" id="field_type">
+                    <option value="JSON">{{ 'rulesValidatorApp.FileType.JSON' | translate }}</option>
+                    <option value="XML">{{ 'rulesValidatorApp.FileType.XML' | translate }}</option>
+                </select>
+                <div *ngIf="editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('type')?.errors?.required" jhiTranslate="validation-tester.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="validation-tester.model" for="field_model">Model</label>
+                <textarea class="form-control" id="field_model" name="model" formControlName="model" style="height: 20em"></textarea>
+                <div *ngIf="editForm.get('model')!.invalid && (editForm.get('model')!.dirty || editForm.get('model')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('model')?.errors?.required" jhiTranslate="validation-tester.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="validation-tester.group" for="field_group">Group</label>
+                <select class="form-control" name="group" formControlName="group" id="field_group" (ngModelChange)="onChangeGroup()">
+                    <option [ngValue]="null">{{ 'global.all' | translate }}</option>
+                    <option [ngValue]="rvRuleGroupOption.id" *ngFor="let rvRuleGroupOption of rvrulegroups; trackBy: trackById">{{ rvRuleGroupOption.ruleGroupName }}</option>
+                </select>
+                <div *ngIf="editForm.get('group')!.invalid && (editForm.get('group')!.dirty || editForm.get('group')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('group')?.errors?.required" jhiTranslate="validation-tester.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="validation-tester.ruleCode" for="field_ruleCode">Rule Code</label>
+                <select class="form-control" name="ruleCode" formControlName="ruleCode" id="field_ruleCode">
+                    <!-- <option [ngValue]="null"></option> -->
+                    <option [ngValue]="rvRuleCodeOption.ruleCode" *ngFor="let rvRuleCodeOption of rvrules; trackBy: trackByRuleCode">{{ rvRuleCodeOption.description }}</option>
+                </select>
+                <div *ngIf="editForm.get('ruleCode')!.invalid && (editForm.get('ruleCode')!.dirty || editForm.get('ruleCode')!.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('ruleCode')?.errors?.required" jhiTranslate="validation-tester.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div>
+                    <button type="submit" id="submit-validation-tester" [disabled]="editForm.invalid" class="btn btn-primary">
+                        <fa-icon icon="check"></fa-icon>&nbsp;<span jhiTranslate="validation-tester.action.validate">Validate</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr class="col-8" *ngIf="result"/>
+    <div class="col-8" *ngIf="result">
+        <h2 id="jhi-validation-tester-result" jhiTranslate="validation-tester.result.title">Validation Result</h2>
+
+        <div>
+            <span *ngIf="result.valid">
+                <fa-icon icon="check"></fa-icon>
+                <span jhiTranslate="validation-tester.result.ok">OK</span>
+            </span>
+            <span *ngIf="!result.valid">
+                <fa-icon icon="times"></fa-icon>
+                <span jhiTranslate="validation-tester.result.ko">KO</span>
+            </span>
+        </div>
+    </div>
 </div>
+

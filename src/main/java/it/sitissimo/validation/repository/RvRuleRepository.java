@@ -29,4 +29,6 @@ public interface RvRuleRepository extends JpaRepository<RvRule, Long> {
 
     @Query("select rvRule from RvRule rvRule left join fetch rvRule.rvParams where rvRule.ruleCode =:ruleCode")
     Optional<RvRule> findOneWithEagerRelationships(@Param("ruleCode") String ruleCode);
+
+    List<RvRule> findByGroupId(Long groupId);
 }

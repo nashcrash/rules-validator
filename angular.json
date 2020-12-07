@@ -31,6 +31,7 @@
   },
   "defaultProject": "rules-validator",
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "f9078300-094f-4236-bde4-4108dc666ef1"
   }
 }
