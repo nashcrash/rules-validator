@@ -7,7 +7,6 @@ import { RulesValidatorCoreModule } from 'app/core/core.module';
 import { RulesValidatorAppRoutingModule } from './app-routing.module';
 import { RulesValidatorHomeModule } from './home/home.module';
 import { RulesValidatorEntityModule } from './entities/entity.module';
-import { RulesValidatorAppRuleEditorModule } from './rule-editor/rule-editor.module';
 import { RulesValidatorAppValidationTesterModule } from './validation-tester/validation-tester.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
@@ -23,7 +22,6 @@ import { ErrorComponent } from './layouts/error/error.component';
     RulesValidatorSharedModule,
     RulesValidatorCoreModule,
     RulesValidatorHomeModule,
-    RulesValidatorAppRuleEditorModule,
     RulesValidatorAppValidationTesterModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     RulesValidatorEntityModule,
