@@ -22,3 +22,18 @@
   "model": "<subject><name>admin</name><surname>test</surname><description>prova testo corto</description><contacts><contact type=\"email\" value=\"admin@prova.com\"/><contact type=\"email\" value=\"info@prova.com\"/><contact type=\"email\" value=\"admin@prova.com\"/></contacts></subject>",
   "ruleCode": "test"
 }
+
+{"name":"admin","description":"prova testo corto"}
+
+<root name="test"><description>prova testo corto</description></root>
+
+<subject>
+<name>admin</name>
+<surname>test</surname>
+<description>prova testo corto</description>
+<contacts>
+<contact type="email" value="admin@prova.com"/>
+<contact type="email" value="info@prova.com"/>
+<contact type="email" value="admin@prova.com"/>
+</contacts>
+</subject>

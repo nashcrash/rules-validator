@@ -15,6 +15,14 @@
     },
     "action": {
       "validate": "Valida"
+    },
+    "details": {
+      "ruleCode": "Regola",
+      "level": "Livello",
+      "operator": "Operatore",
+      "description": "Descrizione",
+      "message": "Messaggio",
+      "attributes": "Attributi"
     }
   }
 }

@@ -14,6 +14,8 @@ import it.sitissimo.validation.service.dto.RvValidationRequestDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDTO;
 import it.sitissimo.validation.service.dto.RvValidationResultDetailDTO;
 import it.sitissimo.validation.service.errors.ValidationException;
+import it.sitissimo.validation.web.rest.errors.BadRequestAlertException;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +23,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.util.List;
-
 /**
  * Service Implementation for managing {@link RvOperator}.
  */
 @Service
 @Transactional
 public class ValidationServiceImpl implements ValidationService {
-
     private final Logger log = LoggerFactory.getLogger(ValidationServiceImpl.class);
 
     @Autowired
@@ -64,10 +63,8 @@ public class ValidationServiceImpl implements ValidationService {
                 resultDTO.getDetails().addAll(detailDTOS);
             }
         } catch (JsonProcessingException e) {
-            throw new ValidationException("Error during model processing", e);
+            throw new BadRequestAlertException("Invalid format for Model", "", "invalidFormat");
         }
         return resultDTO;
     }
-
-
 }

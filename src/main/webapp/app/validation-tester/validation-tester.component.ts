@@ -19,6 +19,8 @@ export class ValidationTesterComponent implements OnInit {
   rvrules: IRvRule[] = [];
   rvrulegroups: IRvRuleGroup[] = [];
   result: ValidationResult | null = null;
+  predicate: string;
+  ascending: boolean;
 
   editForm = this.fb.group({
     type: ['JSON', [Validators.required]],
@@ -32,7 +34,10 @@ export class ValidationTesterComponent implements OnInit {
     protected rvRuleGroupService: RvRuleGroupService,
     protected rvRuleService: RvRuleService,
     private fb: FormBuilder
-  ) {}
+  ) {
+    this.predicate = 'ruleCode';
+    this.ascending = true;
+  }
 
   ngOnInit(): void {
     this.rvRuleGroupService.query().subscribe((res: HttpResponse<IRvRuleGroup[]>) => (this.rvrulegroups = res.body || []));
@@ -61,8 +66,8 @@ export class ValidationTesterComponent implements OnInit {
   }
 
   onChangeGroup(): void {
-    const group: number | null = this.editForm.get(['group'])!.value;
-    if (group == null) {
+    const group: number = this.editForm.get(['group'])!.value;
+    if (group === 0) {
       this.rvRuleService.query().subscribe((res: HttpResponse<IRvRule[]>) => (this.rvrules = res.body || []));
     } else {
       this.rvRuleService.query({ groupId: group }).subscribe((res: HttpResponse<IRvRule[]>) => (this.rvrules = res.body || []));
