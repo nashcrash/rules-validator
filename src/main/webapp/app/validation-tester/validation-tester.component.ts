@@ -25,7 +25,7 @@ export class ValidationTesterComponent implements OnInit {
   editForm = this.fb.group({
     type: ['JSON', [Validators.required]],
     ruleCode: [null, [Validators.required]],
-    group: [],
+    group: [0],
     model: [null, [Validators.required]],
   });
 
@@ -40,7 +40,10 @@ export class ValidationTesterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rvRuleGroupService.query().subscribe((res: HttpResponse<IRvRuleGroup[]>) => (this.rvrulegroups = res.body || []));
+    this.rvRuleGroupService.query().subscribe((res: HttpResponse<IRvRuleGroup[]>) => {
+      this.rvrulegroups = res.body || [];
+      this.onChangeGroup();
+    });
   }
 
   private createFromForm(): ValidationRequest {
