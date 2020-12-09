@@ -1,0 +1,28 @@
+{
+  "validation-tester": {
+    "title": "Tester Regole",
+    "type": "Formato",
+    "group": "Gruppo",
+    "ruleCode": "Regola",
+    "model": "Modello",
+    "result": {
+      "title": "Risultato Validazione",
+      "ok": "Valido",
+      "ko": "Non Valido"
+    },
+    "validation": {
+      "required": "Campo obbligatorio"
+    },
+    "action": {
+      "validate": "Valida"
+    },
+    "details": {
+      "ruleCode": "Regola",
+      "level": "Livello",
+      "operator": "Operatore",
+      "description": "Descrizione",
+      "message": "Messaggio",
+      "attributes": "Attributi"
+    }
+  }
+}

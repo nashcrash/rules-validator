@@ -1,0 +1,28 @@
+{
+  "validation-tester": {
+    "title": "Validation Tester",
+    "type": "Format",
+    "group": "Group",
+    "ruleCode": "Rule",
+    "model": "Model",
+    "result": {
+      "title": "Validation Result",
+      "ok": "Valid",
+      "ko": "Not Valid"
+    },
+    "validation": {
+      "required": "Required field"
+    },
+    "action": {
+      "validate": "Validate"
+    },
+    "details": {
+      "ruleCode": "Rule Code",
+      "level": "Level",
+      "operator": "Operator",
+      "description": "Description",
+      "message": "Message",
+      "attributes": "Attributes"
+    }
+  }
+}

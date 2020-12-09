@@ -1,0 +1,9 @@
+{
+  "rulesValidatorApp": {
+    "FileType": {
+      "null": "",
+      "JSON": "JSON",
+      "XML": "XML"
+    }
+  }
+}

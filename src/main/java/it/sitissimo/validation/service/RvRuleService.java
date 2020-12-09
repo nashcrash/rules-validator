@@ -1,6 +1,7 @@
 package it.sitissimo.validation.service;
 
 import it.sitissimo.validation.service.dto.RvRuleDTO;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +34,12 @@ public interface RvRuleService {
     Page<RvRuleDTO> findAllWithEagerRelationships(Pageable pageable);
 
     /**
+     * @param groupId
+     * @return
+     */
+    List<RvRuleDTO> findAll(Long groupId);
+
+    /**
      * Get the "id" rvRule.
      *
      * @param id the id of the entity.
@@ -43,7 +50,7 @@ public interface RvRuleService {
     /**
      * Get the "ruleCode" rvRule.
      *
-     * @param id the id of the entity.
+     * @param ruleCode the ruleCode of the entity.
      * @return the entity.
      */
     Optional<RvRuleDTO> findOne(String ruleCode);

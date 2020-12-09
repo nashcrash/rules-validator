@@ -1,9 +1,15 @@
 {
   "global": {
+    "all": "Tutti",
     "title": "RulesValidator",
     "browsehappy": "Stai utilizzando un browser <strong> non aggiornato </ strong> <a href=\"http://browsehappy.com/?locale=it\"> Aggiorna il tuo browser per </a> migliorare la tua esperienza.",
     "menu": {
       "home": "Home",
+      "rules-validation": {
+        "main": "Gestione Regole",
+        "rule-editor": "Editor di Regole",
+        "validation-tester": "Tester Regole"
+      },
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entità",
@@ -135,7 +141,8 @@
     "userexists": "Il nome utente è già in uso!",
     "emailexists": "L'email è già in uso!",
     "idexists": "Un(a) nuovo/a {{entityName}} non può già avere un ID",
-    "idnull": "Invalid ID",
+    "idnull": "ID non valido",
+    "invalidFormat": "Formato non valido per Modello",
     "file": {
       "could.not.extract": "Could not extract file",
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""

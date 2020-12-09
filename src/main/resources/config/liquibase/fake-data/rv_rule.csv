@@ -1,4 +1,4 @@
 id;rule_code;description;level;mode;group_id;operator_id
 1;test;Test;CRITICAL;ALL_VALIDATION;1;18
-2;test_name;Test Name;CRITICAL;ALL_VALIDATION;1;1
-3;test_description;Test Description;CRITICAL;ALL_VALIDATION;1;26
+2;test_name;Test Name;CRITICAL;ALL_VALIDATION;;1
+3;test_description;Test Description;CRITICAL;ALL_VALIDATION;;26

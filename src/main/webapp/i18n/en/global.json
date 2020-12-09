@@ -1,9 +1,15 @@
 {
   "global": {
+    "all": "All",
     "title": "RulesValidator",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
+      "rules-validation": {
+        "main": "Rules Validation",
+        "rule-editor": "Rule Editor",
+        "validation-tester": "Validation Tester"
+      },
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
@@ -137,6 +143,7 @@
     "emailexists": "Email is already in use!",
     "idexists": "A new {{ entityName }} cannot already have an ID",
     "idnull": "Invalid ID",
+    "invalidFormat": "Invalid format for Model",
     "file": {
       "could.not.extract": "Could not extract file",
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
